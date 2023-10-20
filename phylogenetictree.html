@@ -1,0 +1,912 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Phylogenetic tree &#8212; eDNA workshop HKU</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'phylogenetictree';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Statistical analysis" href="statisticalanalysis.html" />
+    <link rel="prev" title="Data pre-processing" href="datapreprocessing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo3.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo3.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting up the environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinformaticanalysis.html">Bioinformatic analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomyassignment.html">Taxonomy assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datapreprocessing.html">Data pre-processing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Phylogenetic tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statisticalanalysis.html">Statistical analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fphylogenetictree.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/phylogenetictree.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Phylogenetic tree</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-parsing-data">1. Reading/Parsing data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-msa">2. Calculating MSA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-based-phylogenies">3. Distance-based phylogenies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-distances">3.1 Computing distances</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-trees">3.2 Building trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-quality">3.3 Tree quality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-trees">4. Exporting trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-data-visualization">5. Intro to data visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-into-r">5.1 Reading data into R</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-tree">5.2 Visualise tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-massaging">5.3 Data massaging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">5.4 Bar plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-all-plots">5.5 Combine all plots</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="phylogenetic-tree">
+<h1>Phylogenetic tree<a class="headerlink" href="#phylogenetic-tree" title="Permalink to this heading">#</a></h1>
+<p>Before conducting the statistical analysis, there is one last output file we can create to help us explore our data, a phylogenetic tree of the ZOTU sequences. Phylogenetic relatedness is commonly used to inform downstream analyses, especially the calculation of phylogeny-aware distances. We can create the phylogenetic tree in R. Therefore, let’s open a new R script and save it as <strong>sequenceData/1-scripts/phylotree.R</strong>. We can copy-paste the R code below into this script to run all the code.</p>
+<p>First, let’s set up the R environment by setting the working directory and loading all the necessary R packages.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################</span>
+<span class="c1"># PREPARE R ENVIRONMENT #</span>
+<span class="c1">#########################</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ape</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ade4</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">basetheme</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">Biostrings</span><span class="p">)</span>
+
+<span class="c1"># set working directory</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/Users/gjeunen/Documents/work/lectures/HKU2023/tutorial/sequenceData/8-final&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="reading-parsing-data">
+<h2>1. Reading/Parsing data<a class="headerlink" href="#reading-parsing-data" title="Permalink to this heading">#</a></h2>
+<p>To generate the phylogenetic tree file, we need to import the ZOTU sequence file (<strong>sequenceData/8-final/zotusFiltered.fasta</strong>) and the taxonomy assignment file (<strong>sequenceData/8-final/taxonomyFiltered.txt</strong>) into R. Once the files are read into R, we can explore the sequence file and make sure the names between both files match.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">##################</span>
+<span class="c1"># READ DATA IN R #</span>
+<span class="c1">##################</span>
+<span class="n">dna</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readDNAStringSet</span><span class="p">(</span><span class="s">&#39;zotusFiltered.fasta&#39;</span><span class="p">)</span>
+<span class="n">taxonomy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;taxonomyFiltered.txt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\t&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">na.strings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;NA&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># explore data sets</span>
+<span class="n">dna</span>
+<span class="nf">all</span><span class="p">(</span><span class="n">taxonomy</span><span class="o">$</span><span class="n">ID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">dna</span><span class="p">))</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">taxonomy</span><span class="o">$</span><span class="n">phylum</span><span class="p">)</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">taxonomy</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; all(taxonomy$ID == rownames(dna))
+[1] TRUE
+
+&gt; table(taxonomy$phylum)
+
+       Annelida      Arthropoda Bacillariophyta         Bryozoa     Chlorophyta        Chordata        Cnidaria 
+            198             427               7              27               1              19              33 
+       Discosea   Echinodermata      Entoprocta   Eukaryota_nan    Gastrotricha        Mollusca        Nematoda 
+              1              15               2               9               6              71               6 
+       Nemertea Platyhelminthes        Porifera      Rhodophyta      Tardigrada 
+              7               9              11              15               1 
+
+&gt; table(taxonomy$class)
+
+        Actinopteri            Amphibia        Annelida_nan            Anthozoa           Arachnida 
+                 11                   1                   6                  10                  30 
+     Arthropoda_nan          Ascidiacea                Aves   Bacillariophyceae            Bivalvia 
+                  2                   1                   1                   2                  16 
+       Branchiopoda         Bryozoa_nan         Cephalopoda           Chilopoda         Chromadorea 
+                  2                   2                   1                   4                   2 
+         Clitellata          Collembola Coscinodiscophyceae        Demospongiae           Diplopoda 
+                 11                   6                   4                  11                   8 
+       Discosea_nan              Enopla             Enoplea      Entoprocta_nan   Eukaryota_nan_nan 
+                  1                   4                   4                   2                   5 
+    Florideophyceae          Gastropoda    Gastrotricha_nan        Gymnolaemata    Heterotardigrada 
+                 15                  53                   6                  25                   1 
+        Hexanauplia            Hydrozoa             Insecta        Malacostraca            Mammalia 
+                101                  23                 157                 103                   5 
+       Mediophyceae        Nemertea_nan         Ophiuroidea           Ostracoda      Palaeonemertea 
+                  1                   1                  15                   1                   1 
+       Phaeophyceae        Pilidiophora          Polychaeta      Polyplacophora Pyramimonadophyceae 
+                  4                   1                 176                   1                   1 
+      Rhabditophora           Sipuncula         Thecostraca 
+                  9                   5                  13 
+</pre></div>
+</div>
+</div>
+<figure class="align-default" id="dna-string-set-phylogeny">
+<img alt="_images/dnastringsetphylogeny.png" src="_images/dnastringsetphylogeny.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">: The R output of the DNA string set</span><a class="headerlink" href="#dna-string-set-phylogeny" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="calculating-msa">
+<h2>2. Calculating MSA<a class="headerlink" href="#calculating-msa" title="Permalink to this heading">#</a></h2>
+<p>Once the data is read into memory, we can calculate the multiple sequence alignment using <code class="docutils literal notranslate"><span class="pre">ClustalW</span></code> from the <a class="reference external" href="https://bioconductor.org/packages/release/bioc/html/msa.html">msa R package</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Generating a multiple sequence alignment from a small DNA fragment (~313 bp) of such a large data set containing a very broad range of taxonomic groups is incredibly complex and near-impossible. Using standard settings, the alignment will most likely end up nonsensical with a length of thousands of basepairs. To circumvent this issue, we will subset the data into taxonomic groups of interest. For our tutorial data, let’s generate a simple phylogenetic tree for the phylum Cnidaria.</p>
+</div>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#######</span>
+<span class="c1"># MSA #</span>
+<span class="c1">#######</span>
+<span class="c1"># 1. subset the data for the phylum Cnidaria</span>
+<span class="n">taxonomyCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">taxonomy</span><span class="p">,</span><span class="w"> </span><span class="n">phylum</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;Cnidaria&#39;</span><span class="p">)</span>
+<span class="n">dnaCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dna</span><span class="p">[</span><span class="nf">rownames</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="p">)]</span>
+
+<span class="c1"># 1. run MSA for Cnidaria</span>
+<span class="n">multCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">msa</span><span class="p">(</span><span class="n">dnaCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;ClustalW&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;dna&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;input&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="distance-based-phylogenies">
+<h2>3. Distance-based phylogenies<a class="headerlink" href="#distance-based-phylogenies" title="Permalink to this heading">#</a></h2>
+<p>Distance-based phylogenetic reconstruction consists of (i) computing pairwise genetic distances between sequences, (ii) representing these distances using a tree, and (iii) evaluating the relevance of this representation.</p>
+<section id="computing-distances">
+<h3>3.1 Computing distances<a class="headerlink" href="#computing-distances" title="Permalink to this heading">#</a></h3>
+<p>We first compute genetic distances using the <code class="docutils literal notranslate"><span class="pre">dist.dna</span></code> function in the <a class="reference external" href="https://cran.r-project.org/web/packages/ape/index.html">ape R package</a>. This package contains more than 15 different genetic distance models (see <code class="docutils literal notranslate"><span class="pre">?dist.dna</span></code> for details). Here, we use Tamura and Nei 1993’s model, which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################</span>
+<span class="c1"># CALCULATING DISTANCES #</span>
+<span class="c1">#########################</span>
+<span class="c1"># 1. distance calculation for Cnidaria</span>
+<span class="n">multConvertCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">msaConvert</span><span class="p">(</span><span class="n">multCnidaria</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ape::DNAbin&#39;</span><span class="p">)</span>
+<span class="n">distanceCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dist.dna</span><span class="p">(</span><span class="n">multConvertCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;TN93&#39;</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">distanceCnidaria</span><span class="p">)</span>
+<span class="nf">length</span><span class="p">(</span><span class="n">distanceCnidaria</span><span class="p">)</span>
+<span class="n">temp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">distanceCnidaria</span><span class="p">))</span>
+<span class="nf">table.paint</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="w"> </span><span class="n">cleg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">clabel.row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">clabel.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="genetic-distance-visualisation-for-cnidaria">
+<img alt="_images/distancecnidaria.png" src="_images/distancecnidaria.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">: Genetic distance visualisation for the phylum Cnidaria.</span><a class="headerlink" href="#genetic-distance-visualisation-for-cnidaria" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="building-trees">
+<h3>3.2 Building trees<a class="headerlink" href="#building-trees" title="Permalink to this heading">#</a></h3>
+<p>We use trees to get a better representation of the genetic distances between sequences. It is important, however, to bear in mind that the obtained trees are not necessarily an efficient representation of the original distances, and information can - and likely will - be lost in the process. A wide array of algorithms for constructing trees from a distance matrix are available. In this tutorial, we will use the classical Neighbour-joining algorithm.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">##################</span>
+<span class="c1"># BUILDING TREES #</span>
+<span class="c1">##################</span>
+<span class="c1"># 1. for Cnidaria</span>
+<span class="n">treeCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nj</span><span class="p">(</span><span class="n">distanceCnidaria</span><span class="p">)</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">)</span>
+<span class="n">treeCnidaria</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">)</span>
+<span class="nf">title</span><span class="p">(</span><span class="s">&#39;A simple NJ tree of the phylum Cnidaria&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="simple-nj-tree-of-the-phylum-cnidaria">
+<img alt="_images/simplecnidarianjtree.png" src="_images/simplecnidarianjtree.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">: A simple NJ tree of the phylum Cnidaria</span><a class="headerlink" href="#simple-nj-tree-of-the-phylum-cnidaria" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can see that the tree is plotted with the ZOTU labels. This makes it difficult to check if the tree makes any sense, since the ZOTU labels do not provide any information about the taxonomic ID. We can change this by changing the tip labels with a taxonomic ID name. Let’s use the class IDs for the phylum Mollusca and the order IDs for the class Malacostraca.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. plot tree with colored labels for Cnidaria</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">show.tip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">title</span><span class="p">(</span><span class="s">&#39;Unrooted NJ tree for the phylum Cnidaria&#39;</span><span class="p">)</span>
+<span class="nf">tiplabels</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lab2col</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="simple-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels">
+<img alt="_images/simplecolorednjtreecnidaria.png" src="_images/simplecolorednjtreecnidaria.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">: A simple NJ tree of the phylum Cnidaria with coloured tip labels based on the taxonomic ID at the class level.</span><a class="headerlink" href="#simple-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The results are a bit messed up in our trees it seems, with classes mixed together in the tree. However, we need to keep in mind that we currently have created an unrooted tree. The default plot view, though, is rooted. We can check if our tree is rooted or not by using the function <code class="docutils literal notranslate"><span class="pre">is.rooted</span></code>.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. check if tree is rooted</span>
+<span class="nf">is.rooted</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. check if tree is rooted</span>
+<span class="ow">is</span><span class="o">.</span><span class="n">rooted</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">FALSE</span>
+</pre></div>
+</div>
+</div>
+<p>So, a better representation of our tree would be to specify <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">=</span> <span class="pre">'unrooted'</span></code> in our <code class="docutils literal notranslate"><span class="pre">plot</span></code> command.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. plot unrooted tree</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;unrooted&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">show.tip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">title</span><span class="p">(</span><span class="s">&#39;Unrooted NJ tree of phylum Cnidaria&#39;</span><span class="p">)</span>
+<span class="nf">tiplabels</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lab2col</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="unrooted-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels-based-on-the-taxonomic-id-at-the-class-level">
+<img alt="_images/unrootedCnidariaColoured.png" src="_images/unrootedCnidariaColoured.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">: Unrooted NJ tree of the phylum Cnidaria with coloured tip labels based on the taxonomic ID at the class level.</span><a class="headerlink" href="#unrooted-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels-based-on-the-taxonomic-id-at-the-class-level" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To explore our data set through a phylogenetic tree, it is easiest to work on a rooted tree however. To root the tree, we can use a simple “hack”, where we set one of the <code class="docutils literal notranslate"><span class="pre">Anthozoa</span></code> sequences as outgroup. Check the taxnoomy data frame at which row number an <code class="docutils literal notranslate"><span class="pre">Anthozoa</span></code> sequence is located. In our case, ZOTU 1117 in row 1 is assigned an anthazoan taxonomic ID.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. set root of tree as Anthozoa ZOTU 1117 (row 1)</span>
+<span class="n">treeCnidaria2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">root</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">treeCnidaria2</span><span class="p">,</span><span class="w"> </span><span class="n">show.tip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">edge.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="nf">title</span><span class="p">(</span><span class="s">&#39;Rooted NJ tree for phylum Cnidaria&#39;</span><span class="p">)</span>
+<span class="nf">tiplabels</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lab2col</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">fg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;transparent&#39;</span><span class="p">)</span>
+<span class="nf">axisPhylo</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default" id="rooted-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels-based-on-the-taxonomic-id-at-the-class-level">
+<img alt="_images/rootedCnidariaColoured.png" src="_images/rootedCnidariaColoured.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">: Rooted NJ tree of the phylum Cnidaria with coloured tip labels based on the taxonomic ID at the class level.</span><a class="headerlink" href="#rooted-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels-based-on-the-taxonomic-id-at-the-class-level" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is looking much better already! However, there is this one group that isn’t as resolved as it should be between the <code class="docutils literal notranslate"><span class="pre">Anthozoa</span></code> and the <code class="docutils literal notranslate"><span class="pre">Hydrozoa</span></code>. We can change the labels to plot the quality of the BLAST hit and keep the colour of the taxonomic class ID to determine if mis-classification might have occurred. So, let’s plot the tree again with these new labels.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. combine the percent identity and query coverage columns, 2. set root of tree as Anthozoa ZOTU 1117 (row 1)</span>
+<span class="n">cols</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;pident&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;qcov&#39;</span><span class="p">)</span>
+<span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">taxqual</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="p">[,</span><span class="w"> </span><span class="n">cols</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">paste</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;__&#39;</span><span class="p">)</span>
+<span class="n">treeCnidaria3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">root</span><span class="p">(</span><span class="n">treeCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">treeCnidaria3</span><span class="p">,</span><span class="w"> </span><span class="n">show.tip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">edge.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="nf">title</span><span class="p">(</span><span class="s">&#39;Rooted NJ tree for phylum Cnidaria&#39;</span><span class="p">)</span>
+<span class="nf">tiplabels</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">taxqual</span><span class="p">,</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lab2col</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="o">$</span><span class="n">class</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">fg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;transparent&#39;</span><span class="p">)</span>
+<span class="nf">axisPhylo</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default" id="rooted-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels-based-on-the-taxonomic-id-at-the-class-level-and-labels-as-taxonomic-quality">
+<img alt="_images/rootedCnidariaColouredPident.png" src="_images/rootedCnidariaColouredPident.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">: Rooted NJ tree of the phylum Cnidaria with coloured tips based on the taxonomic ID at the class level and labels based on the quality of the BLAST hit.</span><a class="headerlink" href="#rooted-nj-tree-of-the-phylum-cnidaria-with-coloured-tip-labels-based-on-the-taxonomic-id-at-the-class-level-and-labels-as-taxonomic-quality" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the output, we can see that the badly resolved section of the tree, based on the BLAST taxonomic ID, all contain low scores for the BLAST hits, indicating the potential for mis-classification. For your project, you might want to consider removing such signals when using a taxonomic-dependent analysis or, instead, use a taxonomic-independent analysis approach. For this tutorial, we’ll keep the tree as it is and move forward to the next section.</p>
+</section>
+<section id="tree-quality">
+<h3>3.3 Tree quality<a class="headerlink" href="#tree-quality" title="Permalink to this heading">#</a></h3>
+<p>Many genetic distances and hierarchical clustering algorithms can be used to build trees; not all of them are appropriate for a given dataset. Genetic distances rely on hypotheses about the evolution of DNA sequences, which should be taken into account. Once you have chosen an appropriate genetic distance and built a tree using this distance, an essential but yet most often overlooked question is whether this tree is actually a good representation of the original distance matrix. This is easily investigated using simple biplots and correlation indices. The function <code class="docutils literal notranslate"><span class="pre">cophenetic</span></code> is used to compete distances between the tips of the tree. Note that more distances are availabe in the <code class="docutils literal notranslate"><span class="pre">adephylo</span></code> R pacakge and <code class="docutils literal notranslate"><span class="pre">distTips</span></code> function.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">################</span>
+<span class="c1"># TREE QUALITY #</span>
+<span class="c1">################</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="n">distanceCnidaria</span><span class="p">)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.vector</span><span class="p">(</span><span class="nf">as.dist</span><span class="p">(</span><span class="nf">cophenetic</span><span class="p">(</span><span class="n">treeCnidaria2</span><span class="p">)))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;original distance&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;distance in the tree&#39;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Is NJ appropriate?&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">alpha</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">,</span><span class="w"> </span><span class="m">0.4</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="nf">cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="m">2</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">0.9697193</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-default" id="biplot-and-correlation-analysis-of-the-quality-of-the-tree">
+<img alt="_images/treequalityCnidaria.png" src="_images/treequalityCnidaria.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">: Biplot and correlation analysis of the quality of the tree with the original distance matrix values on the x-axis and the distance on the tree on the y-axis.</span><a class="headerlink" href="#biplot-and-correlation-analysis-of-the-quality-of-the-tree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In our case, we can see that this simple Neighbour Joining tree we created for the phylum Cnidaria in our data set is a good representation of the initial distance matrix, with an R2-value of 0.97.</p>
+</section>
+</section>
+<section id="exporting-trees">
+<h2>4. Exporting trees<a class="headerlink" href="#exporting-trees" title="Permalink to this heading">#</a></h2>
+<p>Once we have created the phylogenetic tree, we can export the tree in Newick format to save it using the R code below.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">###############</span>
+<span class="c1"># EXPORT TREE #</span>
+<span class="c1">###############</span>
+<span class="n">ape</span><span class="o">::</span><span class="nf">write.tree</span><span class="p">(</span><span class="n">treeCnidaria2</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;njTreeCnidaria.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="intro-to-data-visualization">
+<h2>5. Intro to data visualization<a class="headerlink" href="#intro-to-data-visualization" title="Permalink to this heading">#</a></h2>
+<p>With this tree we just created, we can start exploring our data set. There are many elaborate ways of exploring your data and creating stunning visualisations. However, most of this will be outside the scope of this tutorial. Today, we will show you how to add other data types to the phylogenetic tree, whereby we will look at differences in detection of the Cnidaria sequences between highly and low-impacted sites. The R package we will be using to generate such figures is <code class="docutils literal notranslate"><span class="pre">ggtree</span></code>, which was developed by Prof. Guangchaung Yu at the University of Hong Kong. For a lot more information to create more elaborate figures and details on the <code class="docutils literal notranslate"><span class="pre">ggtree</span></code> package, I recommend starting with <a class="reference external" href="https://yulab-smu.top/treedata-book/author.html">this book</a>.</p>
+<section id="reading-data-into-r">
+<h3>5.1 Reading data into R<a class="headerlink" href="#reading-data-into-r" title="Permalink to this heading">#</a></h3>
+<p>The first thing we need to do is read our files into the R environment, as well as some R packages. Next, we need to subset our data to only include Cnidarian sequences, as this is what our phylogenetic tree is based on. Last, we can import our data frames into one phyloseq object.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#########################</span>
+<span class="c1"># PREPARE R ENVIRONMENT #</span>
+<span class="c1">#########################</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggtree</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">phyloseq</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">Biostrings</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">speedyseq</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">microbiome</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">egg</span><span class="p">)</span>
+
+<span class="c1"># set working directory</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/Users/gjeunen/Documents/work/lectures/HKU2023/tutorial/sequenceData/8-final&#39;</span><span class="p">)</span>
+
+<span class="c1">##################</span>
+<span class="c1"># READ DATA IN R #</span>
+<span class="c1">##################</span>
+<span class="n">metaData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;../0-metadata/sampleMetadataFiltered.txt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\t&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">check.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">comment.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="n">freqTable</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;zotutableFiltered.txt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\t&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">check.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">comment.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="n">sequenceTable</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readDNAStringSet</span><span class="p">(</span><span class="s">&#39;zotusFiltered.fasta&#39;</span><span class="p">)</span>
+<span class="n">phyloTree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.tree</span><span class="p">(</span><span class="s">&#39;njTreeCnidaria.txt&#39;</span><span class="p">)</span>
+<span class="n">taxonomyTable</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;taxonomyFiltered.txt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;\t&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">check.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">comment.char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1">###############</span>
+<span class="c1"># SUBSET DATA #</span>
+<span class="c1">###############</span>
+<span class="n">taxonomyCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">taxonomyTable</span><span class="p">,</span><span class="w"> </span><span class="n">phylum</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;Cnidaria&#39;</span><span class="p">)</span>
+<span class="n">sequenceCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sequenceTable</span><span class="p">[</span><span class="nf">rownames</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="p">)]</span>
+<span class="n">freqTableCnidaria</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">freqTable</span><span class="p">[</span><span class="nf">rownames</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+
+<span class="c1"># 1. import dataframes into phyloseq</span>
+<span class="n">OTU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">otu_table</span><span class="p">(</span><span class="n">freqTableCnidaria</span><span class="p">,</span><span class="w"> </span><span class="n">taxa_are_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">TAX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tax_table</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">taxonomyCnidaria</span><span class="p">))</span>
+<span class="n">META</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sample_data</span><span class="p">(</span><span class="n">metaData</span><span class="p">)</span>
+<span class="n">physeq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">merge_phyloseq</span><span class="p">(</span><span class="n">OTU</span><span class="p">,</span><span class="w"> </span><span class="n">TAX</span><span class="p">,</span><span class="w"> </span><span class="n">META</span><span class="p">,</span><span class="w"> </span><span class="n">phyloTree</span><span class="p">,</span><span class="w"> </span><span class="n">sequenceTable</span><span class="p">)</span>
+<span class="n">physeq</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">physeq</span>
+<span class="n">phyloseq</span><span class="o">-</span><span class="k">class</span> <span class="nc">experiment</span><span class="o">-</span><span class="n">level</span> <span class="nb">object</span>
+<span class="n">otu_table</span><span class="p">()</span>   <span class="n">OTU</span> <span class="n">Table</span><span class="p">:</span>         <span class="p">[</span> <span class="mi">33</span> <span class="n">taxa</span> <span class="ow">and</span> <span class="mi">24</span> <span class="n">samples</span> <span class="p">]</span>
+<span class="n">sample_data</span><span class="p">()</span> <span class="n">Sample</span> <span class="n">Data</span><span class="p">:</span>       <span class="p">[</span> <span class="mi">24</span> <span class="n">samples</span> <span class="n">by</span> <span class="mi">32</span> <span class="n">sample</span> <span class="n">variables</span> <span class="p">]</span>
+<span class="n">tax_table</span><span class="p">()</span>   <span class="n">Taxonomy</span> <span class="n">Table</span><span class="p">:</span>    <span class="p">[</span> <span class="mi">33</span> <span class="n">taxa</span> <span class="n">by</span> <span class="mi">9</span> <span class="n">taxonomic</span> <span class="n">ranks</span> <span class="p">]</span>
+<span class="n">phy_tree</span><span class="p">()</span>    <span class="n">Phylogenetic</span> <span class="n">Tree</span><span class="p">:</span> <span class="p">[</span> <span class="mi">33</span> <span class="n">tips</span> <span class="ow">and</span> <span class="mi">31</span> <span class="n">internal</span> <span class="n">nodes</span> <span class="p">]</span>
+<span class="n">refseq</span><span class="p">()</span>      <span class="n">DNAStringSet</span><span class="p">:</span>      <span class="p">[</span> <span class="mi">33</span> <span class="n">reference</span> <span class="n">sequences</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="visualise-tree">
+<h3>5.2 Visualise tree<a class="headerlink" href="#visualise-tree" title="Permalink to this heading">#</a></h3>
+<p>Now that we have all our data imported into R and phyloseq objects, let’s visualise our phylogenetic tree using <code class="docutils literal notranslate"><span class="pre">ggtree</span></code>.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#####################</span>
+<span class="c1"># PHYLOGENETIC TREE #</span>
+<span class="c1">#####################</span>
+<span class="c1"># 1. create phylogenetic tree</span>
+<span class="n">ptree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggtree</span><span class="p">(</span><span class="n">phyloTree</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_tiplab</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">linesize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">ladderize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_tree2</span><span class="p">()</span>
+<span class="n">ptree</span>
+</pre></div>
+</div>
+<figure class="align-default" id="basic-plot-of-the-phylogenetic-tree-using-the-ggtree-r-package">
+<img alt="_images/ggtreebasic.png" src="_images/ggtreebasic.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">: Basic plot of the phylogenetic tree of the phylum Cnidaria using the <code class="docutils literal notranslate"><span class="pre">ggtree</span></code> R package.</span><a class="headerlink" href="#basic-plot-of-the-phylogenetic-tree-using-the-ggtree-r-package" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="data-massaging">
+<h3>5.3 Data massaging<a class="headerlink" href="#data-massaging" title="Permalink to this heading">#</a></h3>
+<p>For the plot we want to create, i.e., a multiple bar graph showing differences in Cnidaria detection between high and low impacted sites, we do not need to differentiate between size fractions. Therefore, let’s merge the 100 µm and 500 µm samples originating from the same ARMS. Afterwards, we can transform the data to presence-absence, as we would like to determine detection frequency differences between the sites.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. merge different size fractions of the same ARMS, 2. transform data to presence-absence</span>
+<span class="n">physeq.arms</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge_samples2</span><span class="p">(</span><span class="n">physeq</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ARMS_ID&#39;</span><span class="p">)</span>
+<span class="n">physeq.arms.pa</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">microbiome</span><span class="o">::</span><span class="nf">transform</span><span class="p">(</span><span class="n">physeq.arms</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;pa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">physeq</span><span class="o">.</span><span class="n">arms</span><span class="o">.</span><span class="n">pa</span>
+<span class="n">phyloseq</span><span class="o">-</span><span class="k">class</span> <span class="nc">experiment</span><span class="o">-</span><span class="n">level</span> <span class="nb">object</span>
+<span class="n">otu_table</span><span class="p">()</span>   <span class="n">OTU</span> <span class="n">Table</span><span class="p">:</span>          <span class="p">[</span> <span class="mi">33</span> <span class="n">taxa</span> <span class="ow">and</span> <span class="mi">12</span> <span class="n">samples</span> <span class="p">]:</span>
+<span class="n">sample_data</span><span class="p">()</span> <span class="n">Sample</span> <span class="n">Data</span><span class="p">:</span>        <span class="p">[</span> <span class="mi">12</span> <span class="n">samples</span> <span class="n">by</span> <span class="mi">32</span> <span class="n">sample</span> <span class="n">variables</span> <span class="p">]:</span>
+<span class="n">tax_table</span><span class="p">()</span>   <span class="n">Taxonomy</span> <span class="n">Table</span><span class="p">:</span>     <span class="p">[</span> <span class="mi">33</span> <span class="n">taxa</span> <span class="n">by</span> <span class="mi">9</span> <span class="n">taxonomic</span> <span class="n">ranks</span> <span class="p">]:</span>
+<span class="n">phy_tree</span><span class="p">()</span>    <span class="n">Phylogenetic</span> <span class="n">Tree</span><span class="p">:</span>  <span class="p">[</span> <span class="mi">33</span> <span class="n">tips</span> <span class="ow">and</span> <span class="mi">31</span> <span class="n">internal</span> <span class="n">nodes</span> <span class="p">]:</span>
+<span class="n">refseq</span><span class="p">()</span>      <span class="n">DNAStringSet</span><span class="p">:</span>       <span class="p">[</span> <span class="mi">33</span> <span class="n">reference</span> <span class="n">sequences</span> <span class="p">]</span>
+<span class="n">taxa</span> <span class="n">are</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="bar-plots">
+<h3>5.4 Bar plots<a class="headerlink" href="#bar-plots" title="Permalink to this heading">#</a></h3>
+<p>Next, we can create separate bar plots for the low-impacted and the high-impacted sites. We need to make sure that the y-axis, which displays the ZOTU sequences, is in the same order as the tree. We can accomplish this through the <code class="docutils literal notranslate"><span class="pre">get_taxa_name</span></code> function in <code class="docutils literal notranslate"><span class="pre">ggtree</span></code>. Note that we have to reverse this order to make it match with the bar plot.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. generate bar graph for low-impacted sites</span>
+<span class="n">lowColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;#528B8B&#39;</span>
+<span class="n">orderedTipLabels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">get_taxa_name</span><span class="p">(</span><span class="n">ptree</span><span class="p">)</span>
+<span class="n">physeq.arms.pa.low</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset_samples</span><span class="p">(</span><span class="n">physeq.arms.pa</span><span class="p">,</span><span class="w"> </span><span class="n">impact</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;low&#39;</span><span class="p">)</span>
+<span class="n">bar.freq.low</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">physeq.arms.pa.low</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">psmelt</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">as_tibble</span><span class="p">()</span>
+<span class="n">barfreq.low</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar.freq.low</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OTU</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abundance</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">impact</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;identity&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lowColor</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_y_discrete</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rev</span><span class="p">(</span><span class="n">orderedTipLabels</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w"> </span><span class="n">expand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.title.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span><span class="w"> </span><span class="n">axis.text.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span><span class="w"> </span><span class="n">axis.ticks.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span><span class="w"> </span><span class="n">axis.line.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">())</span>
+<span class="n">barfreq.low</span>
+</pre></div>
+</div>
+<figure class="align-default" id="bar-plot-of-the-low-impacted-sites">
+<img alt="_images/barplotlow.png" src="_images/barplotlow.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">: Bar plot of the low impacted sites.</span><a class="headerlink" href="#bar-plot-of-the-low-impacted-sites" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. generate bar graph for high-impacted sites</span>
+<span class="n">highColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;#CBDCDC&#39;</span>
+<span class="n">orderedTipLabels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">get_taxa_name</span><span class="p">(</span><span class="n">ptree</span><span class="p">)</span>
+<span class="n">physeq.arms.pa.high</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset_samples</span><span class="p">(</span><span class="n">physeq.arms.pa</span><span class="p">,</span><span class="w"> </span><span class="n">impact</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+<span class="n">bar.freq.high</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">physeq.arms.pa.high</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">psmelt</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">as_tibble</span><span class="p">()</span>
+<span class="n">barfreq.high</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar.freq.high</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OTU</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abundance</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">impact</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;identity&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">highColor</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_y_discrete</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rev</span><span class="p">(</span><span class="n">orderedTipLabels</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w"> </span><span class="n">expand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.title.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span><span class="w"> </span><span class="n">axis.text.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span><span class="w"> </span><span class="n">axis.ticks.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span><span class="w"> </span><span class="n">axis.line.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">())</span>
+<span class="n">barfreq.high</span>
+</pre></div>
+</div>
+<figure class="align-default" id="bar-plot-of-the-high-impacted-sites">
+<img alt="_images/barplothigh.png" src="_images/barplothigh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">: Bar plot of the high impacted sites.</span><a class="headerlink" href="#bar-plot-of-the-high-impacted-sites" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="combine-all-plots">
+<h3>5.5 Combine all plots<a class="headerlink" href="#combine-all-plots" title="Permalink to this heading">#</a></h3>
+<p>One final aspect is to combine all plots. We can easily do this using the <code class="docutils literal notranslate"><span class="pre">egg</span></code> R package, which allows us to specify the number of rows we want to plot (<code class="docutils literal notranslate"><span class="pre">nrow</span></code>) and the width of each plot (<code class="docutils literal notranslate"><span class="pre">widths</span></code>).</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. combine using egg</span>
+<span class="nf">ggarrange</span><span class="p">(</span><span class="n">ptree</span><span class="p">,</span><span class="w"> </span><span class="n">barfreq.low</span><span class="p">,</span><span class="w"> </span><span class="n">barfreq.high</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">widths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<figure class="align-default" id="combined-phylo-tree">
+<img alt="_images/combinedphylotree.png" src="_images/combinedphylotree.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">: A combined plot showing the Cnidarian phylogenetic tree, as well as the detection frequency of each observed Cnidarian sequence for the low and high impacted sites.</span><a class="headerlink" href="#combined-phylo-tree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="datapreprocessing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data pre-processing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="statisticalanalysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Statistical analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-parsing-data">1. Reading/Parsing data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-msa">2. Calculating MSA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-based-phylogenies">3. Distance-based phylogenies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-distances">3.1 Computing distances</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-trees">3.2 Building trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-quality">3.3 Tree quality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-trees">4. Exporting trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-data-visualization">5. Intro to data visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-into-r">5.1 Reading data into R</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-tree">5.2 Visualise tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-massaging">5.3 Data massaging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">5.4 Bar plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-all-plots">5.5 Combine all plots</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Gert-Jan Jeunen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

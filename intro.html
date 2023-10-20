@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; eDNA workshop HKU</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Setting up the environment" href="setup.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo3.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo3.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting up the environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinformaticanalysis.html">Bioinformatic analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="taxonomyassignment.html">Taxonomy assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datapreprocessing.html">Data pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylogenetictree.html">Phylogenetic tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statisticalanalysis.html">Statistical analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1><center>eDNA workshop HKU</center></h1>
+<p>Welcome to the bioinformatic and statistical analysis sessions of the eDNA workshop held at Hong Kong University!</p>
+<p>The primary goal of the following couple of sessions are to introduce you to the analysis of eDNA metabarcoding sequence data, and ultimately make you comfortable to explore your own next-generation sequencing project. The sessions are split up into three days, with the bioinformatic analysis on the 23rd of October, taxonomy assignment on the 24th of October, and statistical analysis on the 25th of October. At the end of the three days, we hope you will be able to understand and execute the main steps in a bioinformatic pipeline, build your own custom reference database, assign a taxonomic ID to your sequences using different algorithms, and analyse metabarcoding data in a statistically correct manner.</p>
+<h2><center>A quick recap on last week</center></h2>
+<p>We covered a wide range of topics during the first week of this eDNA workshop, including the importance of experimental design, how to conduct field work, appropriate laboratory protocols to process low-quantity DNA samples, and various sequencing approaches.</p>
+<p>For the following sessions, we will assume that we have submitted our library and received the sequencing data back from the sequencing service. The steps that we will cover in the next few days are:</p>
+<ol class="arabic simple">
+<li><p><em>The bioinformatic processing of the raw sequence data;</em></p></li>
+<li><p><em>Taxonomy assignment of the biologically-relevant sequences;</em></p></li>
+<li><p><em>The statistical analysis to answer the question of your hypothesis.</em></p></li>
+</ol>
+<figure class="align-default" id="edna-workflow">
+<img alt="_images/eDNA_workflow.png" src="_images/eDNA_workflow.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">: a general overview of the eDNA metabarcoding workflow from sample collection to data analysis.</span><a class="headerlink" href="#edna-workflow" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Before we get started with the bioinformatic pipeline, we will first introduce the data we will be analysing, some of the software programs available (including the ones we will use in this workshop), and the general structure of a bioinformatic pipeline to process metabarcoding data. Finally, we will go over the folder structure we suggest you use during the processing of metabarcoding data to help keep an overview of the files and ensure reproducibility of the analysis.</p>
+<h2><center>Experimental setup</center></h2>
+<p>The data we will be analysing is a subset of the data from an eDNA metabarcoding experiment conducted by Dr Mathew Seymour and Dr Isis Guibert in Hong Kong, where they were interested to investigate how varying intensities of anthropogenic impacts alter the biodiversity in the Pearl River Delta. To test this, they deployed 3 ARMS (Autonomous Reef Monitoring Structures) at each site over summer, including two highly impacted (SSW: San Shek Wan; PC: Peng Chau) and two sites with low human impact (BI: Bluff Island; TPC: Tung Ping Chau). After deployment, the ARMS structure was taken apart by detaching the individual plates. Motile organisms were removed first by hand and then through sieves in two size fractions, including 100 µm and 500 µm. The plate surfaces were then photographed and sessile organisms were scraped off each plate and homogenized in a blender. DNA metabarcoding using a ~313 bp fragment of the cytochrome c oxidase subunit I (Leray &amp; Knowlton, 2015) was conducted to asses bulk diversity between the highly impacted and low impact sites. Size fractions were sequenced separately, allowing us to investigate diversity differences within each size fraction, as well as the combined diversity. <strong>During the bioinformatic and statistical analysis, we will be processing the 100 µm and 500 µm size fractions from the two highly-impacted and two low-impacted locations.</strong></p>
+<figure class="align-default" id="experimental-design">
+<img alt="_images/experimental_design.png" src="_images/experimental_design.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">: The experimental design of the data we will be analysing during the next few days. Note that this is the information of the full experiment. Please read the section above to provide an overview of what subset will be analysed during this workshop.</span><a class="headerlink" href="#experimental-design" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<h2><center>A note on software programs</center></h2>
+<p>The popularity of metabarcoding research, both in the bacterial and eukaryote kingdom, has resulted in the development of a myriad of software packages and pipelines. Furthermore, software packages are continuously updated with new features, as well as novel software programs being designed and published. We will be using several software programs and R packages during this workshop. However, we would like to stress that the pipeline used in the workshop is by no means better than other pipelines and we urge you to explore alternative software programs and trial them with your own data after this workshop.</p>
+<p>Metabarcoding software programs can generally be split up into two categories, including:</p>
+<ol class="arabic simple">
+<li><p><em>stand-alone programs that are self-contained</em>: These programs usually incorporate novel functions or alterations on already-existing functions. Programs can be developed for a specific task within the bioinformatic pipeline or can execute multiple or all steps in the bioinformatic pipeline. Examples of such programs are: Mothur, USEARCH, VSEARCH, cutadapt, dada2, OBITools3.</p></li>
+<li><p><em>wrappers around existing software</em>: These programs attempt to provide an ecosystem for the user to complete all steps within the bioinformatic pipeline without needing to reformat documents or change the coding language. Examples of such programs are: QIIME2 and JAMP.</p></li>
+</ol>
+<p>The list of software programs and R packages we will be using during this tutorial:</p>
+<ol class="arabic simple">
+<li><p>Bioinformatic processing (Terminal):</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FASTQC</a>: assess quality of .fastq files.</p></li>
+<li><p><a class="reference external" href="https://multiqc.info">MULTIQC</a>: concatenate FastQC reports to enable comparisons between samples.</p></li>
+<li><p><a class="reference external" href="https://cutadapt.readthedocs.io/en/stable/">cutadapt</a>: remove adapter regions from sequence data.</p></li>
+<li><p><a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a>: bioinformatic processing of metabarcoding data.</p></li>
+</ol>
+</li>
+<li><p>Taxonomy assignment (Terminal):</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/gjeunen/reference_database_creator">CRABS</a>: build custom curated reference databases.</p></li>
+<li><p><a class="reference external" href="https://www.drive5.com/usearch/manual/sintax_algo.html">SINTAX</a>: k-mer based classifier to assign a taxonomic ID to sequences.</p></li>
+<li><p><a class="reference external" href="http://www2.decipher.codes/Classification.html">IDTAXA (RStudio)</a>: machine learning classifier to assign a taxonomic ID to sequences.</p></li>
+<li><p><a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a>: local alignment classifier to assign a taxonomic ID to sequences.</p></li>
+</ol>
+</li>
+<li><p>Statistical analysis (RStudio):</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://joey711.github.io/phyloseq/">Phyloseq</a>: R package to explore metabarcoding data.</p></li>
+<li><p><a class="reference external" href="https://github.com/KaiHsiangHu/iNEXT.3D">iNEXT.3D</a>: R package to calculate inter- and extrapolation of alpha diversity measures.</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/ape/index.html">ape</a>: R package to build multiple sequence alignments and phylogenetic trees.</p></li>
+<li><p><a class="reference external" href="https://microbiome.github.io/tutorials/">microbiome</a>: R package as an extension to phyloseq.</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/indicspecies/vignettes/IndicatorSpeciesAnalysis.html">indicspecies</a>: R package to calculate indicator species values</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/vegan/vegan.pdf">vegan</a>: R package to calculate various alpha and beta diversity measures.</p></li>
+<li><p><a class="reference external" href="https://yulab-smu.top/treedata-book/index.html">ggtree</a>: build phylogenetic tree graphics.</p></li>
+</ol>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some software programs change the standard structure of your file to be compatible with the functions implemented within the program. When implementing several software programs in your bioinformatic pipeline, such modifications in the file structure could lead to incompatability issues when switching to the next program in your pipeline. It is, therefore, important to understand how a specific program changes the structure of the sequence file and learn how these modifications can be reverted back (through simple python, bash, or R scripts). We will talk a little bit more about file structure and conversion throughout the workshop.</p>
+</div>
+<h2><center>General overview of the bioinformatic pipeline</center></h2>
+<p>Although software options are numerous, each pipeline follows more or less the same basic steps and accomplishes these steps using similar tools. Before we get started with coding, let’s quickly go over the main steps of the pipeline to give you a clear overview of what we will cover today. For each of these steps, we will provide more information when we cover those sections during the workshop.</p>
+<figure class="align-default" id="bioinformatic-pipeline">
+<img alt="_images/bioinformaticpipelineworkflow.png" src="_images/bioinformaticpipelineworkflow.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">: The general workflow of the bioinformatic pipeline. Copyright: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.13847">Hakimzadeh <em>et al</em>., 2023.</a></span><a class="headerlink" href="#bioinformatic-pipeline" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<h2><center>A note on scripts and reproducible code</center></h2>
+<p>One final topic we need to cover before we get started with coding is the use of scripts to execute code. During this workshop, we will create very small and simple scripts that contain the code used to process the sequencing data. While it is possible to run the commands directly in the Terminal window without using scripts, it is good practice to use this method for the following three reasons:</p>
+<ol class="arabic simple">
+<li><p>By using scripts to execute the code, there is a written record of how the data was processed. This will make it easier for you to remember how the data was processed in the future.</p></li>
+<li><p>While the sample data provided in this tutorial is small and computing steps take up a maximum of several minutes, processing large data sets can be time consuming. It is, therefore, recommended to process a small portion of the data first to test the code, modify the filenames once everything is set up, and run it on the full data set.</p></li>
+<li><p>Scripts can be reused in the future by changing file names, saving you time by not having to constantly write every line of code in the terminal. Minimising the amount needing to be written in the terminal will, also, minimise the risk of receiving error messages due to typo’s.</p></li>
+</ol>
+<h2><center>Getting started!</center></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-terminal sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0114.25 15H1.75A1.75 1.75 0 010 13.25V2.75zm1.75-.25a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V2.75a.25.25 0 00-.25-.25H1.75zM7.25 8a.75.75 0 01-.22.53l-2.25 2.25a.75.75 0 11-1.06-1.06L5.44 8 3.72 6.28a.75.75 0 111.06-1.06l2.25 2.25c.141.14.22.331.22.53zm1.5 1.5a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"></path></svg> Set up</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap stretched-link reference internal" href="setup.html"><span class="doc">The process of setting up the folder structure and moving initial files to their respective subdirectories.</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-terminal sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0114.25 15H1.75A1.75 1.75 0 010 13.25V2.75zm1.75-.25a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V2.75a.25.25 0 00-.25-.25H1.75zM7.25 8a.75.75 0 01-.22.53l-2.25 2.25a.75.75 0 11-1.06-1.06L5.44 8 3.72 6.28a.75.75 0 111.06-1.06l2.25 2.25c.141.14.22.331.22.53zm1.5 1.5a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"></path></svg> Bioinformatic analysis</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap stretched-link reference internal" href="bioinformaticanalysis.html"><span class="doc">A fully annotated workflow of the bioinformatic analysis, going from raw sequence data to a frequency table.</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-desktop-download sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.927 5.427l2.896 2.896a.25.25 0 00.354 0l2.896-2.896A.25.25 0 0010.896 5H8.75V.75a.75.75 0 10-1.5 0V5H5.104a.25.25 0 00-.177.427z"></path><path d="M1.573 2.573a.25.25 0 00-.073.177v7.5a.25.25 0 00.25.25h12.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-3a.75.75 0 110-1.5h3A1.75 1.75 0 0116 2.75v7.5A1.75 1.75 0 0114.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.75.75 0 0111.25 16h-6.5a.75.75 0 01-.565-1.243c.772-.885 1.192-1.716 1.292-2.757H1.75A1.75 1.75 0 010 10.25v-7.5A1.75 1.75 0 011.75 1h3a.75.75 0 010 1.5h-3a.25.25 0 00-.177.073zM6.982 12a5.72 5.72 0 01-.765 2.5h3.566a5.72 5.72 0 01-.765-2.5H6.982z"></path></svg> Taxonomy assignment</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap stretched-link reference internal" href="taxonomyassignment.html"><span class="doc">Building your own custom reference database (CRABS) and assign a taxonomic ID using three classifiers, including a k-mer based approach (SINTAX), a machine learning algorithm (IDTAXA), and a local alignment approach (BLAST).</span></a></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-number sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5.604.089A.75.75 0 016 .75v4.77h.711a.75.75 0 110 1.5H3.759a.75.75 0 110-1.5H4.5V2.15l-.334.223a.75.75 0 01-.832-1.248l1.5-1a.75.75 0 01.77-.037zM9 4.75A.75.75 0 019.75 4h4a.75.75 0 01.53 1.28l-1.89 1.892c.312.076.604.18.867.319.742.391 1.244 1.063 1.244 2.005 0 .653-.231 1.208-.629 1.627-.386.408-.894.653-1.408.777-1.01.243-2.225.063-3.124-.527a.75.75 0 01.822-1.254c.534.35 1.32.474 1.951.322.306-.073.53-.201.67-.349.129-.136.218-.32.218-.596 0-.308-.123-.509-.444-.678-.373-.197-.98-.318-1.806-.318a.75.75 0 01-.53-1.28l1.72-1.72H9.75A.75.75 0 019 4.75zm-3.587 5.763c-.35-.05-.77.113-.983.572a.75.75 0 11-1.36-.632c.508-1.094 1.589-1.565 2.558-1.425 1 .145 1.872.945 1.872 2.222 0 1.433-1.088 2.192-1.79 2.681-.308.216-.571.397-.772.573H7a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75c0-.69.3-1.211.67-1.61.348-.372.8-.676 1.15-.92.8-.56 1.18-.904 1.18-1.474 0-.473-.267-.69-.587-.737z"></path></svg> Data pre-processing</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap stretched-link reference internal" href="datapreprocessing.html"><span class="doc">An explanation of how to process the output files from the bioinformatic pipeline prior to data exploration and statistical analysis (e.g., dealing with detections in negative control samples, removal of artefact sequences, etc.).</span></a></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-git-branch sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M11.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122V6A2.5 2.5 0 0110 8.5H6a1 1 0 00-1 1v1.128a2.251 2.251 0 11-1.5 0V5.372a2.25 2.25 0 111.5 0v1.836A2.492 2.492 0 016 7h4a1 1 0 001-1v-.628A2.25 2.25 0 019.5 3.25zM4.25 12a.75.75 0 100 1.5.75.75 0 000-1.5zM3.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0z"></path></svg> Phylogenetic tree</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap stretched-link reference internal" href="phylogenetictree.html"><span class="doc">Building a Neighbour Joining tree to enable the calculation of phylogeny-aware distances, as well as the exploration of the data through phylogenetic tree views.</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-graph sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1.5 1.75a.75.75 0 00-1.5 0v12.5c0 .414.336.75.75.75h14.5a.75.75 0 000-1.5H1.5V1.75zm14.28 2.53a.75.75 0 00-1.06-1.06L10 7.94 7.53 5.47a.75.75 0 00-1.06 0L3.22 8.72a.75.75 0 001.06 1.06L7 7.06l2.47 2.47a.75.75 0 001.06 0l5.25-5.25z"></path></svg> Statistical analysis</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap stretched-link reference internal" href="statisticalanalysis.html"><span class="doc">Fully annotated R code to explore metabarcoding data and conduct multiple statistical analyses, including alpha and beta diversity measurements, as well as indicator species analysis.</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="right-next"
+       href="setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setting up the environment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Gert-Jan Jeunen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
