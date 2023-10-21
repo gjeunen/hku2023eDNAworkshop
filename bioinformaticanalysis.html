@@ -386,7 +386,7 @@ document.write(`
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">568074346</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">20</span><span class="p">:</span><span class="mi">28</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">568074346</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
 </div>
@@ -461,7 +461,7 @@ document.write(`
 <p>Unzipping the <strong>HKeDNAworkshop2023.zip</strong> file has generated a bunch of files for all of the samples in our experiment, each represented with a forward (<strong>_1.fastq</strong>) and reverse (<strong>_2.fastq</strong>) fastq file.</p>
 <section id="counting-files-pipe">
 <h4>1.1.1 Counting files (pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>)<a class="headerlink" href="#counting-files-pipe" title="Permalink to this heading">#</a></h4>
-<p>Now that we are getting more familiar with the Terminal and bash commands, let’s introduce something that is called a <code class="docutils literal notranslate"><span class="pre">pipe</span></code>, which is represented by the <code class="docutils literal notranslate"><span class="pre">|</span></code> symbol. A pipe or placing the <code class="docutils literal notranslate"><span class="pre">|</span></code> in your terminal allows you to use the output from one command as the input of a second command. Hence, the terminology “pipe”, as <code class="docutils literal notranslate"><span class="pre">|</span></code> acts as a connection between two different commands. To show you the power of piping commands together, let’s look at the exercise of how you might count the number of samples you have in our data set.</p>
+<p>Now that we are getting more familiar with the Terminal and bash commands, let’s introduce something that is called a <code class="docutils literal notranslate"><span class="pre">pipe</span></code>, which is represented by the <code class="docutils literal notranslate"><span class="pre">|</span></code> symbol. A pipe or placing the <code class="docutils literal notranslate"><span class="pre">|</span></code> in your terminal allows you to use the output from one command as the input of a second command. Hence, the terminology “pipe”, as <code class="docutils literal notranslate"><span class="pre">|</span></code> acts as a connection between two different commands. To show you the power of piping commands together, <strong>let’s look at the exercise of how you might count the number of samples you have in our data set.</strong></p>
 <p><strong>STEP 1:</strong> To solve the issue of counting the number of samples, we can use a step-by-step approach. First, we can use a command you already know, the <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-1</span></code> command to list all the files in the directory. The <code class="docutils literal notranslate"><span class="pre">-1</span></code> parameter will print the files into a single column. Let’s see the output of this command first before we continue.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-1<span class="w"> </span>sequenceData/2-raw/unzipped/
 </pre></div>
@@ -569,13 +569,13 @@ GGTACTGGATGAACAGTATATCCCCCCCTAAGCTCCAATATTGCCCACGCCGGGGCGTCTGTTGACCTTGCTATCTTTAG
 </div>
 </div>
 <p><strong>.fasta</strong> files, on the other hand, are simple text files structured in a slightly different way, whereby each sequence record is represented by 2 lines. The first line contains the header information and the line starts with the symbol <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. The second line contains the actual sequence. The third and fourth line that are in the .fastq files are missing in the .fasta files, as this file structure does not incorporate the quality of a sequence. We can inspect the file structure of a .fasta file by using the <code class="docutils literal notranslate"><span class="pre">head</span></code> or <code class="docutils literal notranslate"><span class="pre">tail</span></code> command on the reference database.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>sequenceData/7-refdb/leray_COI_sintax.fasta
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>sequenceData/7-refdb/newDBcrabsCOIsintax.fasta
 </pre></div>
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">AB037573</span><span class="p">;</span><span class="n">tax</span><span class="o">=</span><span class="n">d</span><span class="p">:</span><span class="n">Eukaryota</span><span class="p">,</span><span class="n">p</span><span class="p">:</span><span class="n">Arthropoda</span><span class="p">,</span><span class="n">c</span><span class="p">:</span><span class="n">Insecta</span><span class="p">,</span><span class="n">o</span><span class="p">:</span><span class="n">Trichoptera</span><span class="p">,</span><span class="n">f</span><span class="p">:</span><span class="n">Limnephilidae</span><span class="p">,</span><span class="n">g</span><span class="p">:</span><span class="n">Nothopsyche</span><span class="p">,</span><span class="n">s</span><span class="p">:</span><span class="n">Nothopsyche_pallipes</span>
-<span class="n">TCTTTCTAGTAATCTAGCCCACGCAGGAAGTTCAGTTGATATTTCTATTTTTTCCCTGCATTTAGCAGGAATTTCTTCAATCTTAGGGGCTATTAATTTTATCTCAACACCTTTAAATATACGAAGAAATCTAATTTCGCTAGCCCGCATTCCCCTATTTGTCTGATCGGTCGCTATCACAGCACTTCTTCTTCTTCTTTCTCTCCCCGTATTAGCTGGAGCTATCGCAATATTACTTACCGACCGTAATTTAAATACTTCCTTTTTTGATCCCTCAGGGGGCGGAGACCCCATTCTTTACCAACACTTATTT</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">AJ488637</span><span class="p">;</span><span class="n">tax</span><span class="o">=</span><span class="n">d</span><span class="p">:</span><span class="n">Eukaryota</span><span class="p">,</span><span class="n">p</span><span class="p">:</span><span class="n">Mollusca</span><span class="p">,</span><span class="n">c</span><span class="p">:</span><span class="n">Gastropoda</span><span class="p">,</span><span class="n">o</span><span class="p">:</span><span class="n">Littorinimorpha</span><span class="p">,</span><span class="n">f</span><span class="p">:</span><span class="n">Littorinidae</span><span class="p">,</span><span class="n">g</span><span class="p">:</span><span class="n">Littoraria</span><span class="p">,</span><span class="n">s</span><span class="p">:</span><span class="n">Littoraria_scabra</span>
+<span class="n">TCTTGCAGGCAACCTGGCTCACGCCGGGGGCTCTGTAGATCTAGCAATTTTTTCACTCCATCTAGCCGGTGTGTCTTCTATTTTAGGGGCTGTAAATTTCATTACAACCATCATTAATATGCGATGACGAGGTATGCAGTTTGAACGTCTACCTCTCTTTGTTTGATCAGTAAAGATTACAGCTATTCTTCTTCTTTTATCTCTCCCAGTTTTAGCTGGTGCAATTACCATACTCTTAACGGATCGAAACTTCAATACTGCCTTCTTTGACCCTGCCGGAGGAGGAGATCC</span>
 </pre></div>
 </div>
 </div>
@@ -653,36 +653,50 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <p class="admonition-title">Warning</p>
 <p><strong>Make sure to change the value of the <code class="docutils literal notranslate"><span class="pre">-t</span></code> parameter to the number of cores available on your system!</strong></p>
 </div>
+<p>To run <a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FASTQC</a> on the supercomputer, we can modify the template script <strong>sequenceData/1-scripts/example-script.sh</strong>. We can open text documents with CLI text editors, such as <strong>nano</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
+<p>When opening the script, we can add the following line of code to execute the <a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FASTQC</a> command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fastqc<span class="w"> </span>sequenceData/2-raw/unzipped/*<span class="w"> </span>-o<span class="w"> </span>sequenceData/3-fastqc/<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<p>We can exit out of the editor by pressing <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. We will change the name of the script to <strong>fastqc_raw.sh</strong> and press <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name. After completing these steps, you should end back up in the normal Terminal window. To check if we created this new script, let’s use the <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-ltr</span></code> command again.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-ltr<span class="w"> </span>sequenceData/1-scripts
 </pre></div>
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Started</span> <span class="n">analysis</span> <span class="n">of</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">5</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">10</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">15</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">20</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">25</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">30</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">35</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">40</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">45</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">50</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">55</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">60</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">65</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">70</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">75</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">80</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">85</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">90</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Approx</span> <span class="mi">95</span><span class="o">%</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
-<span class="n">Analysis</span> <span class="n">complete</span> <span class="k">for</span> <span class="n">COI_100_HK37_1</span><span class="o">.</span><span class="n">fastq</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">776</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">example</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">169</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">module_load</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">833</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">11</span><span class="p">:</span><span class="mi">33</span> <span class="n">fastqc_raw</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </div>
-<p>Once executed, FastQC will generate a .html report for every single file in the subdirectory <strong>sequenceData/2-raw/unzipped/</strong>. Let’s open one report to see what it contains. From the FastQC .html reports, we are particularly interested in the <strong>summary tab</strong>, as well as the <strong>per base sequence quality</strong> and <strong>sequence length distribution figures</strong>.</p>
+<p>To run the command on the supercomputer, we can use the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/fastqc_raw.sh
+</pre></div>
+</div>
+<p>Once this command is executed, it will be placed in the queue to be run on the cluster. We can use the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command to check if our code is running or if the job is finished. It is best to specify your jobs specifically using the <code class="docutils literal notranslate"><span class="pre">-u</span></code> or user parameter, followed by your user name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>-u<span class="w"> </span>ednaw01
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Make sure to change the <code class="docutils literal notranslate"><span class="pre">-u</span></code> parameter to your user name!</strong></p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">JOBID</span> <span class="n">PARTITION</span>     <span class="n">NAME</span>     <span class="n">USER</span> <span class="n">ST</span>       <span class="n">TIME</span>  <span class="n">NODES</span> <span class="n">NODELIST</span><span class="p">(</span><span class="n">REASON</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Once finished, FastQC will generate a .html report for every single file in the subdirectory <strong>sequenceData/2-raw/unzipped/</strong>. Let’s open one report to see what it contains. The .html reports are stored in the subdirectory <strong>sequenceData/3-fastqc/</strong>. From the FastQC .html reports, we are particularly interested in the <strong>summary tab</strong>, as well as the <strong>per base sequence quality</strong> and <strong>sequence length distribution figures</strong>.</p>
+<p>Since we are working on the supercomputer, we need to download the .html report to our computer before we can open it. To do this, let’s open a new Terminal window that is not connected to the supercomputer, move to the <strong>Desktop</strong> directory using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command and download the file using the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command, which stands for secure copy. While not essential in this case, you can add the <code class="docutils literal notranslate"><span class="pre">-r</span></code> parameter to allow the download of directories. We also need to specify the server location of the file to download and where we would like to download the file to on our system.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>Desktop
+scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/sequenceData/3-fastqc/COI_100_HK37_1_fastqc.html<span class="w"> </span>./
+</pre></div>
+</div>
 <figure class="align-default" id="fastqc-raw-report">
 <img alt="_images/fastqcraw.png" src="_images/fastqcraw.png" />
 <figcaption>
@@ -691,7 +705,15 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 </figure>
 <p>The quality of file <strong>COI_100_HK37_1.fastq</strong> is looking very good and the number of sequences reported for this sample (160,732 reads) is a good sequencing depth as well!</p>
 <p>Opening each report for the 54 files separately, however, is quite tedious and makes it difficult to compare differences between files. Luckily, multiQC was developed to collate these reports into a single .html report. We can use the <code class="docutils literal notranslate"><span class="pre">.</span></code> symbol in combination with the path to specify a minimal output to the Terminal window. The <code class="docutils literal notranslate"><span class="pre">-o</span></code> parameter let’s us set the output directory.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>multiqc<span class="w"> </span>sequenceData/3-fastqc/.<span class="w"> </span>-o<span class="w"> </span>sequenceData/3-fastq/
+<p>Again, to run this on the supercomputer, we need to modify the initial template script and add in the <code class="docutils literal notranslate"><span class="pre">multiqc</span></code> code.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>multiqc<span class="w"> </span>sequenceData/3-fastqc/.<span class="w"> </span>-o<span class="w"> </span>sequenceData/3-fastqc/
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>multiqc_raw.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/multiqc_raw.sh
 </pre></div>
 </div>
 <figure class="align-default" id="multiqc-terminal-output">
@@ -700,7 +722,10 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">: Terminal output for multiQC</span><a class="headerlink" href="#multiqc-terminal-output" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The multiQC program will combine all 54 FastQC reports into a single .html document. Let’s open this to see how our raw sequence data is looking like.</p>
+<p>The multiQC program will combine all 54 FastQC reports into a single .html document. Let’s download and open this file to see how our raw sequence data is looking like.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/sequenceData/3-fastqc/multiqc_report.html<span class="w"> </span>./
+</pre></div>
+</div>
 <figure class="align-default" id="multiqc-report">
 <img alt="_images/multiqcreport2.png" src="_images/multiqcreport2.png" />
 <figcaption>
@@ -716,7 +741,14 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <h3>2.1 A single sample example<a class="headerlink" href="#a-single-sample-example" title="Permalink to this heading">#</a></h3>
 <p>Once we have assessed the quality of the raw sequence data and did not observe any issues, we can move ahead with merging the forward and reverse reads of each sample. As a reminder, we have 54 .fastq files, indicating that we have 27 samples in our experiment, one forward and one reverse file for each sample.</p>
 <p>For this experiment and particular library, we have amplified a ~313 bp fragment of the COI gene (excluding primer-binding regions). With the sequencing run specifications of a MiSeq 2x250 paired-end V2 sequencing kit, we have a partial overlap between the forward and reverse reads in the middle of the amplicon region. This overlap is essential for successful merging. Today, we will be using the <code class="docutils literal notranslate"><span class="pre">--fastq_mergepairs</span></code> command in <a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a> to merge reads between the forward and reverse .fastq sequence files. We can specify the reverse sequence file through the <code class="docutils literal notranslate"><span class="pre">--reverse</span></code> parameter and the output file through the <code class="docutils literal notranslate"><span class="pre">--fastqout</span></code> parameter. To check the options available within the program, you can always read the documentation and pull up the help vignette by executing <code class="docutils literal notranslate"><span class="pre">vsearch</span> <span class="pre">--help</span></code> in the Terminal window. Before merging reads immediately on all samples, it is best to play around with the parameters on a single sample.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vsearch<span class="w"> </span>--fastq_mergepairs<span class="w"> </span>sequenceData/2-raw/unzipped/COI_100_HK37_1.fastq<span class="w"> </span>--reverse<span class="w"> </span>sequenceData/2-raw/unzipped/COI_100_HK37_2.fastq<span class="w"> </span>--fastqout<span class="w"> </span>sequenceData/2-raw/COI_100_HK37merged.fastq
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>merge_single.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/merge_single.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -764,18 +796,21 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <p>Basically, the first line tells us that the program will go through a list and <code class="docutils literal notranslate"><span class="pre">for</span></code> each item in the list, <code class="docutils literal notranslate"><span class="pre">do</span></code> something (line 2), which in this case is <code class="docutils literal notranslate"><span class="pre">execute</span> <span class="pre">command</span></code> (line 3). Once the program has executed the command in all items within the list, we need to close the loop by specifying <code class="docutils literal notranslate"><span class="pre">done</span></code> (line 4). So, with a for loop, we can tell the computer to merge reads for our 27 samples automatically, saving us the time to have to execute the code to merge reads 27 times by ourselves.</p>
 <p>Within our for loop to merge reads for all samples, we will generate a list of all forward sequencing files (<code class="docutils literal notranslate"><span class="pre">*_1.fastq</span></code>). Before writing the code to merge reads in our for loop, we will first print which sample is being merged, as the VSEARCH output does not specify this (<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Merging</span> <span class="pre">reads</span> <span class="pre">for:</span> <span class="pre">${R1/_1.fastq/}&quot;</span></code>). To print to the Terminal, we can use the <code class="docutils literal notranslate"><span class="pre">echo</span></code> command. With the last parameter for the <code class="docutils literal notranslate"><span class="pre">echo</span></code> command (<code class="docutils literal notranslate"><span class="pre">${R1/_1.fastq/}&quot;</span></code>), we specify that from our forward sequencing file name <code class="docutils literal notranslate"><span class="pre">$R1</span></code>, substitute <code class="docutils literal notranslate"><span class="pre">_1.fastq</span></code> with nothing. After the <code class="docutils literal notranslate"><span class="pre">echo</span></code> command, we execute the <code class="docutils literal notranslate"><span class="pre">vsearch</span> <span class="pre">--fastq_mergepairs</span></code> command as we did above, but we need to use the for loop syntax to tell the program what our forward, reverse, and output file names are. Remember that those names change when the program iterates over the list, so we cannot hard code them into the command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>sequenceData/2-raw/COI_100_HK37merged.fastq<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>sequenceData/2-raw/unzipped/
+nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>R1<span class="w"> </span><span class="k">in</span><span class="w"> </span>*_1.fastq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sequenceData/2-raw/unzipped/
+<span class="k">for</span><span class="w"> </span>R1<span class="w"> </span><span class="k">in</span><span class="w"> </span>*_1.fastq
 <span class="k">do</span>
 
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;\n\nMerging reads for: </span><span class="si">${</span><span class="nv">R1</span><span class="p">/_1.fastq/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="w">  </span>vsearch<span class="w"> </span>--fastq_mergepairs<span class="w"> </span><span class="si">${</span><span class="nv">R1</span><span class="si">}</span><span class="w"> </span>--reverse<span class="w"> </span><span class="si">${</span><span class="nv">R1</span><span class="p">/_1.fastq/_2.fastq</span><span class="si">}</span><span class="w"> </span>--fastqout<span class="w"> </span>../<span class="si">${</span><span class="nv">R1</span><span class="p">/1.fastq/merged.fastq</span><span class="si">}</span>
 
 <span class="k">done</span>
-
-<span class="nb">cd</span><span class="w"> </span>../../../
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>merge_batch.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/merge_batch.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -1648,13 +1683,19 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <p>Once we have copy-pasted the code, we can press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+x</span></code> to exit out of the editor, followed by <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">return</span></code> to save the file. After doing so, we’re back in the normal Terminal window. Before we can run or execute our first script, we need to make it executable.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Remember the permissions for each file that we discussed before? By running the <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-ltr</span></code> command, we can see that for the script we have just created, we only have read (<code class="docutils literal notranslate"><span class="pre">r</span></code>) and write (<code class="docutils literal notranslate"><span class="pre">w</span></code>) access, but no execution (<code class="docutils literal notranslate"><span class="pre">x</span></code>) permission.</p>
+<p>Remember the permissions for each file that we discussed before? By running the <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-ltr</span></code> command, we can see that for the script we have just created, we only have read (<code class="docutils literal notranslate"><span class="pre">r</span></code>) and write (<code class="docutils literal notranslate"><span class="pre">w</span></code>) access, but no execution (<code class="docutils literal notranslate"><span class="pre">x</span></code>) permission. This is essential in this case, as we won’t be running the script using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-ltr<span class="w"> </span>sequenceData/1-scripts/
 </pre></div>
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">2149</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span> <span class="n">rawMergedStatistics</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">776</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">example</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">169</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">module_load</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">833</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">11</span><span class="p">:</span><span class="mi">33</span> <span class="n">fastqc_raw</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">822</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span> <span class="n">multiqc_raw</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">955</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">10</span> <span class="n">merge_single</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">985</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">21</span> <span class="n">merge_batch</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">2146</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">26</span> <span class="n">rawMergedStatistics</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>
@@ -1669,12 +1710,28 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">2149</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span> <span class="n">rawMergedStatistics</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">776</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">example</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">169</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">module_load</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">833</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">11</span><span class="p">:</span><span class="mi">33</span> <span class="n">fastqc_raw</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">822</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span> <span class="n">multiqc_raw</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">955</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">10</span> <span class="n">merge_single</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>  <span class="mi">985</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">21</span> <span class="n">merge_batch</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">2146</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">12</span><span class="p">:</span><span class="mi">26</span> <span class="n">rawMergedStatistics</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>
 <p>To execute the script, we can use the <code class="docutils literal notranslate"><span class="pre">./</span></code> command followed by the python script and our two user parameters where our (<em>parameter 1</em>) merged and (<em>parameter 2</em>) raw files are located.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sequenceData/1-scripts/rawMergedStatistics.py<span class="w"> </span>sequenceData/2-raw/<span class="w"> </span>sequenceData/2-raw/unzipped/
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>check_merging.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/check_merging.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_bargraph.png<span class="w"> </span>./
 </pre></div>
 </div>
 <figure class="align-default" id="raw-and-merged-read-count">
@@ -1699,7 +1756,14 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <section id="id1">
 <h3>3.1 A single sample example<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>At this point, our merged reads still contain the primer sequences. Since these regions are artefacts from the PCR amplification and not biological, they will need to be removed from the reads before continuing with the bioinformatic pipeline. For this library and experiment, we have used the mlCOIintF/jgHCO2198 primer set (Leray et al., 2013). The forward primer corresponds to 5’-GGWACWGGWTGAACWGTWTAYCCYCC-3’ and the reverse primer sequence is 5’-TAIACYTCIGGRTGICCRAARAAYCA-3’. Before batch processing every sample, let’s test our code on a single sample again to start with. For primer or adapter removal, we can use the program <a class="reference external" href="https://cutadapt.readthedocs.io/en/stable/">cutadapt</a>. To specify the primers to be removed, we can use the <code class="docutils literal notranslate"><span class="pre">-a</span></code> parameter. Since we’re removing both the forward and reverse primer, we can link them together using <code class="docutils literal notranslate"><span class="pre">...</span></code>. Remember to use the reverse complement of the reverse primer, as this would be the direction the reverse primer is found in our sequence data after merging. The minimum and maximum length of the amplicon can be specified with the <code class="docutils literal notranslate"><span class="pre">-m</span></code> and <code class="docutils literal notranslate"><span class="pre">-M</span></code> parameters, respectively. To only keep reads for which both primers were found and removed, we need to specify the <code class="docutils literal notranslate"><span class="pre">--discard-untrimmed</span></code> option. The <code class="docutils literal notranslate"><span class="pre">--no-indels</span></code> and <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">2</span></code> parameters allow us to tell the program to not include insertions and deletions in the search and allow a maximum of 2 errors in the primer sequence. We can specify the <code class="docutils literal notranslate"><span class="pre">--revcomp</span></code> parameter to search for the primer sequences in both directions. Finally, we can use the <code class="docutils literal notranslate"><span class="pre">--cores=0</span></code> parameter to automatically detect the number of available cores.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cutadapt<span class="w"> </span>sequenceData/2-raw/COI_100_HK37_merged.fastq<span class="w"> </span>-a<span class="w"> </span>GGWACWGGWTGAACWGTWTAYCCYCC...TGRTTYTTYGGHCAYCCHGARGTHTA<span class="w"> </span>-m<span class="w"> </span><span class="m">300</span><span class="w"> </span>-M<span class="w"> </span><span class="m">330</span><span class="w"> </span>--discard-untrimmed<span class="w"> </span>-o<span class="w"> </span>sequenceData/4-demux/COI_100_HK37_trimmed.fastq<span class="w"> </span>--no-indels<span class="w"> </span>-e<span class="w"> </span><span class="m">2</span><span class="w"> </span>--revcomp<span class="w"> </span>--cores<span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>adapter_removal_single.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/adapter_removal_single.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -1786,18 +1850,21 @@ rename<span class="w"> </span><span class="s1">&#39;s/_/-/g&#39;</span><span cla
 <h3>3.2 batch trimming<a class="headerlink" href="#batch-trimming" title="Permalink to this heading">#</a></h3>
 <p>Similarly to the merging of reads, we need to process 27 samples. Hence, we will write another for loop to accomplish this goal, rather than executing the code to trim primer sequences 27 times by ourselves. Because the cutadapt output that is written to the Terminal window is very elaborate, we will write it to a file instead. In the next section (<em>Summarizing cutadapt output</em>), we’ll parse the output to produce some graphs in order to get a better overview of how cutadapt performed across the 27 samples. First, we will remove the file we just generated and move to the <strong>sequenceData/2-raw/</strong> directory. As we’ve introduced the for loop syntax before and explained the cutadapt code snippet, I won’t be going into too much detail on each aspect.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>sequenceData/4-demux/COI_100_HK37_trimmed.fastq
-<span class="nb">cd</span><span class="w"> </span>sequenceData/2-raw/
+nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>fq<span class="w"> </span><span class="k">in</span><span class="w"> </span>*merged.fastq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sequenceData/2-raw/
+<span class="k">for</span><span class="w"> </span>fq<span class="w"> </span><span class="k">in</span><span class="w"> </span>*merged.fastq
 <span class="k">do</span>
 
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;trimming primer seqs for: </span><span class="si">${</span><span class="nv">fq</span><span class="p">/_merged.fastq/</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="w">  </span>cutadapt<span class="w"> </span><span class="si">${</span><span class="nv">fq</span><span class="si">}</span><span class="w"> </span>-a<span class="w"> </span>GGWACWGGWTGAACWGTWTAYCCYCC...TGRTTYTTYGGHCAYCCHGARGTHTA<span class="w"> </span>-m<span class="w"> </span><span class="m">300</span><span class="w"> </span>-M<span class="w"> </span><span class="m">330</span><span class="w"> </span>--discard-untrimmed<span class="w"> </span>-o<span class="w"> </span>../4-demux/<span class="si">${</span><span class="nv">fq</span><span class="p">/merged.fastq/trimmed.fastq</span><span class="si">}</span><span class="w"> </span>--no-indels<span class="w"> </span>-e<span class="w"> </span><span class="m">2</span><span class="w"> </span>--revcomp<span class="w"> </span>--cores<span class="o">=</span><span class="m">0</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>../0-metadata/cutadapt_primer_trimming.txt
 
 <span class="k">done</span>
-
-<span class="nb">cd</span><span class="w"> </span>../../
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>adapter_removal_batch.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/adapter_removal_batch.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">

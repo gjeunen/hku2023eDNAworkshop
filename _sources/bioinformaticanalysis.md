@@ -27,7 +27,7 @@ ls -ltr sequenceData/2-raw
 ````{admonition} Output
 :class: note, dropdown
 ```
--rw-r--r--  1 gjeunen  staff  568074346  6 Oct 20:28 HKeDNAworkshop2023.zip
+-rw-r--r-- 1 ednaw01 others 568074346 Oct 21 10:59 HKeDNAworkshop2023.zip
 ```
 ````
 
@@ -106,7 +106,7 @@ Unzipping the **HKeDNAworkshop2023.zip** file has generated a bunch of files for
 
 #### 1.1.1 Counting files (pipe `|`)
 
-Now that we are getting more familiar with the Terminal and bash commands, let's introduce something that is called a `pipe`, which is represented by the `|` symbol. A pipe or placing the `|` in your terminal allows you to use the output from one command as the input of a second command. Hence, the terminology "pipe", as `|` acts as a connection between two different commands. To show you the power of piping commands together, let's look at the exercise of how you might count the number of samples you have in our data set.
+Now that we are getting more familiar with the Terminal and bash commands, let's introduce something that is called a `pipe`, which is represented by the `|` symbol. A pipe or placing the `|` in your terminal allows you to use the output from one command as the input of a second command. Hence, the terminology "pipe", as `|` acts as a connection between two different commands. To show you the power of piping commands together, **let's look at the exercise of how you might count the number of samples you have in our data set.**
 
 **STEP 1:** To solve the issue of counting the number of samples, we can use a step-by-step approach. First, we can use a command you already know, the `ls -1` command to list all the files in the directory. The `-1` parameter will print the files into a single column. Let's see the output of this command first before we continue.
 
@@ -229,14 +229,14 @@ GGTACTGGATGAACAGTATATCCCCCCCTAAGCTCCAATATTGCCCACGCCGGGGCGTCTGTTGACCTTGCTATCTTTAG
 **.fasta** files, on the other hand, are simple text files structured in a slightly different way, whereby each sequence record is represented by 2 lines. The first line contains the header information and the line starts with the symbol `>`. The second line contains the actual sequence. The third and fourth line that are in the .fastq files are missing in the .fasta files, as this file structure does not incorporate the quality of a sequence. We can inspect the file structure of a .fasta file by using the `head` or `tail` command on the reference database.
 
 ```{code-block} bash
-tail -n 2 sequenceData/7-refdb/leray_COI_sintax.fasta
+tail -n 2 sequenceData/7-refdb/newDBcrabsCOIsintax.fasta
 ```
 
 ````{admonition} Output
 :class: note, dropdown
 ```
->AB037573;tax=d:Eukaryota,p:Arthropoda,c:Insecta,o:Trichoptera,f:Limnephilidae,g:Nothopsyche,s:Nothopsyche_pallipes
-TCTTTCTAGTAATCTAGCCCACGCAGGAAGTTCAGTTGATATTTCTATTTTTTCCCTGCATTTAGCAGGAATTTCTTCAATCTTAGGGGCTATTAATTTTATCTCAACACCTTTAAATATACGAAGAAATCTAATTTCGCTAGCCCGCATTCCCCTATTTGTCTGATCGGTCGCTATCACAGCACTTCTTCTTCTTCTTTCTCTCCCCGTATTAGCTGGAGCTATCGCAATATTACTTACCGACCGTAATTTAAATACTTCCTTTTTTGATCCCTCAGGGGGCGGAGACCCCATTCTTTACCAACACTTATTT
+>AJ488637;tax=d:Eukaryota,p:Mollusca,c:Gastropoda,o:Littorinimorpha,f:Littorinidae,g:Littoraria,s:Littoraria_scabra
+TCTTGCAGGCAACCTGGCTCACGCCGGGGGCTCTGTAGATCTAGCAATTTTTTCACTCCATCTAGCCGGTGTGTCTTCTATTTTAGGGGCTGTAAATTTCATTACAACCATCATTAATATGCGATGACGAGGTATGCAGTTTGAACGTCTACCTCTCTTTGTTTGATCAGTAAAGATTACAGCTATTCTTCTTCTTTTATCTCTCCCAGTTTTAGCTGGTGCAATTACCATACTCTTAACGGATCGAAACTTCAATACTGCCTTCTTTGACCCTGCCGGAGGAGGAGATCC
 ```
 ````
 
@@ -316,38 +316,64 @@ Up to this point, we have unzipped our sequence data, checked the file structure
 **Make sure to change the value of the `-t` parameter to the number of cores available on your system!**
 ```
 
+To run [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) on the supercomputer, we can modify the template script **sequenceData/1-scripts/example-script.sh**. We can open text documents with CLI text editors, such as **nano**.
+
+```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+When opening the script, we can add the following line of code to execute the [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) command.
+
 ```{code-block} bash
 fastqc sequenceData/2-raw/unzipped/* -o sequenceData/3-fastqc/ -t 8
+```
+
+We can exit out of the editor by pressing `ctrl + x` and `y`. We will change the name of the script to **fastqc_raw.sh** and press `y` to save under a different name. After completing these steps, you should end back up in the normal Terminal window. To check if we created this new script, let's use the `ls -ltr` command again.
+
+```{code-block} bash
+ls -ltr sequenceData/1-scripts
 ```
 
 ````{admonition} Output
 :class: note, dropdown
 ```
-Started analysis of COI_100_HK37_1.fastq
-Approx 5% complete for COI_100_HK37_1.fastq
-Approx 10% complete for COI_100_HK37_1.fastq
-Approx 15% complete for COI_100_HK37_1.fastq
-Approx 20% complete for COI_100_HK37_1.fastq
-Approx 25% complete for COI_100_HK37_1.fastq
-Approx 30% complete for COI_100_HK37_1.fastq
-Approx 35% complete for COI_100_HK37_1.fastq
-Approx 40% complete for COI_100_HK37_1.fastq
-Approx 45% complete for COI_100_HK37_1.fastq
-Approx 50% complete for COI_100_HK37_1.fastq
-Approx 55% complete for COI_100_HK37_1.fastq
-Approx 60% complete for COI_100_HK37_1.fastq
-Approx 65% complete for COI_100_HK37_1.fastq
-Approx 70% complete for COI_100_HK37_1.fastq
-Approx 75% complete for COI_100_HK37_1.fastq
-Approx 80% complete for COI_100_HK37_1.fastq
-Approx 85% complete for COI_100_HK37_1.fastq
-Approx 90% complete for COI_100_HK37_1.fastq
-Approx 95% complete for COI_100_HK37_1.fastq
-Analysis complete for COI_100_HK37_1.fastq
+-rw-r--r-- 1 ednaw01 others 776 Oct 21 10:59 example-script.sh
+-rw-r--r-- 1 ednaw01 others 169 Oct 21 10:59 module_load
+-rw-r--r-- 1 ednaw01 others 833 Oct 21 11:33 fastqc_raw.sh
 ```
 ````
 
-Once executed, FastQC will generate a .html report for every single file in the subdirectory **sequenceData/2-raw/unzipped/**. Let's open one report to see what it contains. From the FastQC .html reports, we are particularly interested in the **summary tab**, as well as the **per base sequence quality** and **sequence length distribution figures**.
+To run the command on the supercomputer, we can use the `sbatch` command.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/fastqc_raw.sh
+```
+
+Once this command is executed, it will be placed in the queue to be run on the cluster. We can use the `squeue` command to check if our code is running or if the job is finished. It is best to specify your jobs specifically using the `-u` or user parameter, followed by your user name.
+
+```{code-block} bash
+squeue -u ednaw01
+```
+
+```{warning}
+**Make sure to change the `-u` parameter to your user name!**
+```
+
+````{admonition} Output
+:class: note, dropdown
+```
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+```
+````
+
+Once finished, FastQC will generate a .html report for every single file in the subdirectory **sequenceData/2-raw/unzipped/**. Let's open one report to see what it contains. The .html reports are stored in the subdirectory **sequenceData/3-fastqc/**. From the FastQC .html reports, we are particularly interested in the **summary tab**, as well as the **per base sequence quality** and **sequence length distribution figures**.
+
+Since we are working on the supercomputer, we need to download the .html report to our computer before we can open it. To do this, let's open a new Terminal window that is not connected to the supercomputer, move to the **Desktop** directory using the `cd` command and download the file using the `scp` command, which stands for secure copy. While not essential in this case, you can add the `-r` parameter to allow the download of directories. We also need to specify the server location of the file to download and where we would like to download the file to on our system.
+
+```{code-block} bash
+cd Desktop
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/sequenceData/3-fastqc/COI_100_HK37_1_fastqc.html ./
+```
 
 ```{figure} fastqcraw.png
 :name: FastQC raw report
@@ -359,8 +385,20 @@ The quality of file **COI_100_HK37_1.fastq** is looking very good and the number
 
 Opening each report for the 54 files separately, however, is quite tedious and makes it difficult to compare differences between files. Luckily, multiQC was developed to collate these reports into a single .html report. We can use the `.` symbol in combination with the path to specify a minimal output to the Terminal window. The `-o` parameter let's us set the output directory.
 
+Again, to run this on the supercomputer, we need to modify the initial template script and add in the `multiqc` code.
+
 ```{code-block} bash
-multiqc sequenceData/3-fastqc/. -o sequenceData/3-fastq/
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
+multiqc sequenceData/3-fastqc/. -o sequenceData/3-fastqc/
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **multiqc_raw.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/multiqc_raw.sh
 ```
 
 ```{figure} multiqcterminal2.png
@@ -369,7 +407,11 @@ multiqc sequenceData/3-fastqc/. -o sequenceData/3-fastq/
 : Terminal output for multiQC
 ```
 
-The multiQC program will combine all 54 FastQC reports into a single .html document. Let's open this to see how our raw sequence data is looking like.
+The multiQC program will combine all 54 FastQC reports into a single .html document. Let's download and open this file to see how our raw sequence data is looking like.
+
+```{code-block} bash
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/sequenceData/3-fastqc/multiqc_report.html ./
+```
 
 ```{figure} multiqcreport2.png
 :name: multiQC report
@@ -388,7 +430,17 @@ Once we have assessed the quality of the raw sequence data and did not observe a
 For this experiment and particular library, we have amplified a ~313 bp fragment of the COI gene (excluding primer-binding regions). With the sequencing run specifications of a MiSeq 2x250 paired-end V2 sequencing kit, we have a partial overlap between the forward and reverse reads in the middle of the amplicon region. This overlap is essential for successful merging. Today, we will be using the `--fastq_mergepairs` command in [VSEARCH](https://github.com/torognes/vsearch) to merge reads between the forward and reverse .fastq sequence files. We can specify the reverse sequence file through the `--reverse` parameter and the output file through the `--fastqout` parameter. To check the options available within the program, you can always read the documentation and pull up the help vignette by executing `vsearch --help` in the Terminal window. Before merging reads immediately on all samples, it is best to play around with the parameters on a single sample.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 vsearch --fastq_mergepairs sequenceData/2-raw/unzipped/COI_100_HK37_1.fastq --reverse sequenceData/2-raw/unzipped/COI_100_HK37_2.fastq --fastqout sequenceData/2-raw/COI_100_HK37merged.fastq
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **merge_single.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/merge_single.sh
 ```
 
 ````{admonition} Output
@@ -442,10 +494,11 @@ Within our for loop to merge reads for all samples, we will generate a list of a
 
 ```{code-block} bash
 rm sequenceData/2-raw/COI_100_HK37merged.fastq 
-cd sequenceData/2-raw/unzipped/
+nano sequenceData/1-scripts/example-script.sh
 ```
 
 ```{code-block} bash
+cd sequenceData/2-raw/unzipped/
 for R1 in *_1.fastq
 do
 
@@ -453,8 +506,12 @@ do
   vsearch --fastq_mergepairs ${R1} --reverse ${R1/_1.fastq/_2.fastq} --fastqout ../${R1/1.fastq/merged.fastq}
 
 done
+```
 
-cd ../../../
+Press `ctrl + x` and `y` to save the file and change the name to **merge_batch.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/merge_batch.sh
 ```
 
 ````{admonition} Output
@@ -1331,7 +1388,7 @@ plt.savefig('raw_and_merged_bargraph.png', dpi = 300)
 Once we have copy-pasted the code, we can press `ctrl +x` to exit out of the editor, followed by `y` and `return` to save the file. After doing so, we're back in the normal Terminal window. Before we can run or execute our first script, we need to make it executable.
 
 `````{important}
-Remember the permissions for each file that we discussed before? By running the `ls -ltr` command, we can see that for the script we have just created, we only have read (`r`) and write (`w`) access, but no execution (`x`) permission.
+Remember the permissions for each file that we discussed before? By running the `ls -ltr` command, we can see that for the script we have just created, we only have read (`r`) and write (`w`) access, but no execution (`x`) permission. This is essential in this case, as we won't be running the script using the `sbatch` command.
 
 ```{code-block} bash
 ls -ltr sequenceData/1-scripts/
@@ -1340,7 +1397,13 @@ ls -ltr sequenceData/1-scripts/
 ````{admonition} Output
 :class: note, dropdown
 ```
--rw-r--r--  1 gjeunen  staff  2149  6 Oct 22:56 rawMergedStatistics.py
+-rw-r--r-- 1 ednaw01 others  776 Oct 21 10:59 example-script.sh
+-rw-r--r-- 1 ednaw01 others  169 Oct 21 10:59 module_load
+-rw-r--r-- 1 ednaw01 others  833 Oct 21 11:33 fastqc_raw.sh
+-rw-r--r-- 1 ednaw01 others  822 Oct 21 12:03 multiqc_raw.sh
+-rw-r--r-- 1 ednaw01 others  955 Oct 21 12:10 merge_single.sh
+-rw-r--r-- 1 ednaw01 others  985 Oct 21 12:21 merge_batch.sh
+-rw-r--r-- 1 ednaw01 others 2146 Oct 21 12:26 rawMergedStatistics.py
 ```
 ````
 To change the permissions or modifiers of a file, we can use the `chmod` command, which stands for *change modifier*. Since we want to make our file executable, we can specify the parameter `+x`.
@@ -1359,14 +1422,34 @@ ls -ltr sequenceData/1-scripts/
 ````{admonition} Output
 :class: note, dropdown
 ```
--rwxr-xr-x  1 gjeunen  staff  2149  6 Oct 22:56 rawMergedStatistics.py
+-rw-r--r-- 1 ednaw01 others  776 Oct 21 10:59 example-script.sh
+-rw-r--r-- 1 ednaw01 others  169 Oct 21 10:59 module_load
+-rw-r--r-- 1 ednaw01 others  833 Oct 21 11:33 fastqc_raw.sh
+-rw-r--r-- 1 ednaw01 others  822 Oct 21 12:03 multiqc_raw.sh
+-rw-r--r-- 1 ednaw01 others  955 Oct 21 12:10 merge_single.sh
+-rw-r--r-- 1 ednaw01 others  985 Oct 21 12:21 merge_batch.sh
+-rwxr-xr-x 1 ednaw01 others 2146 Oct 21 12:26 rawMergedStatistics.py
 ```
 ````
 
 To execute the script, we can use the `./` command followed by the python script and our two user parameters where our (*parameter 1*) merged and (*parameter 2*) raw files are located.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 ./sequenceData/1-scripts/rawMergedStatistics.py sequenceData/2-raw/ sequenceData/2-raw/unzipped/
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **check_merging.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/check_merging.sh
+```
+
+```{code-block} bash
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_bargraph.png ./
 ```
 
 ```{figure} raw_and_merged_bargraph.png
@@ -1395,7 +1478,17 @@ Keep in mind 3rd generation sequencing technologies, which we discussed during t
 At this point, our merged reads still contain the primer sequences. Since these regions are artefacts from the PCR amplification and not biological, they will need to be removed from the reads before continuing with the bioinformatic pipeline. For this library and experiment, we have used the mlCOIintF/jgHCO2198 primer set (Leray et al., 2013). The forward primer corresponds to 5'-GGWACWGGWTGAACWGTWTAYCCYCC-3' and the reverse primer sequence is 5'-TAIACYTCIGGRTGICCRAARAAYCA-3'. Before batch processing every sample, let's test our code on a single sample again to start with. For primer or adapter removal, we can use the program [cutadapt](https://cutadapt.readthedocs.io/en/stable/). To specify the primers to be removed, we can use the `-a` parameter. Since we're removing both the forward and reverse primer, we can link them together using `...`. Remember to use the reverse complement of the reverse primer, as this would be the direction the reverse primer is found in our sequence data after merging. The minimum and maximum length of the amplicon can be specified with the `-m` and `-M` parameters, respectively. To only keep reads for which both primers were found and removed, we need to specify the `--discard-untrimmed` option. The `--no-indels` and `-e 2` parameters allow us to tell the program to not include insertions and deletions in the search and allow a maximum of 2 errors in the primer sequence. We can specify the `--revcomp` parameter to search for the primer sequences in both directions. Finally, we can use the `--cores=0` parameter to automatically detect the number of available cores.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 cutadapt sequenceData/2-raw/COI_100_HK37_merged.fastq -a GGWACWGGWTGAACWGTWTAYCCYCC...TGRTTYTTYGGHCAYCCHGARGTHTA -m 300 -M 330 --discard-untrimmed -o sequenceData/4-demux/COI_100_HK37_trimmed.fastq --no-indels -e 2 --revcomp --cores=0
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **adapter_removal_single.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/adapter_removal_single.sh
 ```
 
 ````{admonition} Output
@@ -1485,10 +1578,11 @@ Similarly to the merging of reads, we need to process 27 samples. Hence, we will
 
 ```{code-block} bash
 rm sequenceData/4-demux/COI_100_HK37_trimmed.fastq
-cd sequenceData/2-raw/
+nano sequenceData/1-scripts/example-script.sh
 ```
 
 ```{code-block} bash
+cd sequenceData/2-raw/
 for fq in *merged.fastq
 do
 
@@ -1496,8 +1590,12 @@ do
   cutadapt ${fq} -a GGWACWGGWTGAACWGTWTAYCCYCC...TGRTTYTTYGGHCAYCCHGARGTHTA -m 300 -M 330 --discard-untrimmed -o ../4-demux/${fq/merged.fastq/trimmed.fastq} --no-indels -e 2 --revcomp --cores=0 >> ../0-metadata/cutadapt_primer_trimming.txt
 
 done
+```
 
-cd ../../
+Press `ctrl + x` and `y` to save the file and change the name to **adapter_removal_batch.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/adapter_removal_batch.sh
 ```
 
 ````{admonition} Output
