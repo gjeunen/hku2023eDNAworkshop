@@ -36,11 +36,11 @@ We will be using the following folder structure for this experiment:
 To set up this folder structure, let us navigate to the starting directory of this workshop. We can do this using the `cd` command, which stands for *change directory*.
 
 ```{warning}
-The code below is the path on my system. Make sure to alter the path that specifies the location of the starting folder on your system.
+The code below assumes you are in the home folder on the HKU supercomputer. Make sure to alter the path that specifies the location of the starting folder on your system if this is not your starting point.
 ```
 
 ```{code-block} bash
-cd /Users/gjeunen/Documents/work/lectures/HKU2023/tutorial/
+cd ednaw01/
 ```
 
 It is always a good idea to check if the code executed as expected. In this case, we can verify we are in the correct working directory by using the `pwd` command, which stands for *print working directory*.
@@ -52,7 +52,7 @@ pwd
 ````{admonition} Output
 :class: note, dropdown
 ```
-/Users/gjeunen/Documents/work/lectures/HKU2023/tutorial
+/home/ednaw01/ednaw01
 ```
 ````
 
@@ -65,15 +65,17 @@ ls -ltr
 ````{admonition} Output
 :class: note, dropdown
 ```
--rwxrwxrwx@ 1 gjeunen  staff  240602642  7 Feb  2023 newDBcrabsCOIsintax.fasta
--rw-r--r--@ 1 gjeunen  staff      11958  6 Oct 13:50 metadata-COI-selected-updated.txt
--rw-r--r--  1 gjeunen  staff  568074346  6 Oct 13:54 HKeDNAworkshop2023.zip
+-rw-r--r-- 1 ednaw01 others     12097 Oct 18 10:31 metadata-COI-selected-updated.txt
+-rw-r--r-- 1 ednaw01 others 112435863 Oct 18 10:36 newDBcrabsCOIsintax.fasta
+-rw-r--r-- 1 ednaw01 others 568074346 Oct 18 10:40 HKeDNAworkshop2023.zip
+-rw-r--r-- 1 ednaw01 others       169 Oct 18 11:36 module_load
+-rw-r--r-- 1 ednaw01 others       776 Oct 18 11:37 example-script.sh
 ```
 ````
 
 The output of the `ls` command provides us with a list of the documents in our starting folder, which are the documents we need to complete the tutorial. More on this in the next section.
 
-Before we go more in detail about the starting files, let us first set up the abovementioned folder structure. While you could complete this task within the folder by generating "new folder", we can use the `mkdir` command in the terminal to set up all the folders and subfolders in one go. Additionally, we will use the `-p` parameter to automatically make any necessary parent directories that might not yet exist.
+Before we go more in detail about the starting files, let us first set up the abovementioned folder structure. Within the command line interface (CLI), we can use the `mkdir` command to set up all the folders and subfolders in one go. Additionally, we will use the `-p` parameter to automatically make any necessary parent directories that might not yet exist.
 
 ```{code-block} bash
 mkdir -p sequenceData/0-metadata sequenceData/1-scripts sequenceData/2-raw sequenceData/3-fastqc sequenceData/4-demux sequenceData/5-filter sequenceData/6-quality sequenceData/7-refdb sequenceData/8-final
@@ -88,10 +90,12 @@ ls -ltr
 ````{admonition} Output
 :class: note, dropdown
 ```
--rwxrwxrwx@  1 gjeunen  staff  240602642  7 Feb  2023 newDBcrabsCOIsintax.fasta
--rw-r--r--@  1 gjeunen  staff      11958  6 Oct 13:50 metadata-COI-selected-updated.txt
--rw-r--r--   1 gjeunen  staff  568074346  6 Oct 13:54 HKeDNAworkshop2023.zip
-drwxr-xr-x  11 gjeunen  staff        352  6 Oct 20:11 sequenceData
+-rw-r--r--  1 ednaw01 others       776 Oct 21 10:52 example-script.sh
+-rw-r--r--  1 ednaw01 others 568074346 Oct 21 10:53 HKeDNAworkshop2023.zip
+-rw-r--r--  1 ednaw01 others     12097 Oct 21 10:53 metadata-COI-selected-updated.txt
+-rw-r--r--  1 ednaw01 others       169 Oct 21 10:53 module_load
+-rw-r--r--  1 ednaw01 others 112435863 Oct 21 10:53 newDBcrabsCOIsintax.fasta
+drwxr-xr-x 11 ednaw01 others        11 Oct 21 10:53 sequenceData
 ```
 ````
 
@@ -103,17 +107,19 @@ Also note the `d` at the beginning of the line of `sequenceData`. These are the 
 2. `r`: read - specifies that we have access to read the file.
 3. `w`: write - specifies that we can write to the file.
 4. `x`: execute - specifies that we have permission to execute the file.
-5. `@`: extended - a novel symbol for MacOS indicating that the file has extended attributes.
+5. `@`: extended - a novel symbol for MacOS indicating that the file has extended attributes (MacOS specific).
 
 ## 2. Starting files
 
-For the bioinformatic and statistical analysis, we need several starting files, including a zipped file containing all the sequencing data (**HKeDNAworkshop2023.zip**), a sample metadata file for the statistical analysis (**metadata-COI-selected-updated.txt**), and our reference database for the taxonomy assignment (**newDBcrabsCOIintax.fasta**).
+For the bioinformatic and statistical analysis, we need several starting files, including a zipped file containing all the sequencing data (**HKeDNAworkshop2023.zip**), a sample metadata file for the statistical analysis (**metadata-COI-selected-updated.txt**), our reference database for the taxonomy assignment (**newDBcrabsCOIintax.fasta**), a template script file where we will paste our code to run on the supercomputer (**example-script.sh**), and a script file that automatically loads all the necessary software on the supercomputer. The last two files are only necessary when working on the HKU supercomputer.
 
 ```{admonition} Starting files
 :class: important
 1. HKeDNAworkshop2023.zip
 2. metadata-COI-selected-updated.txt
 3. newDBcrabsCOIsintax.fasta
+4. example-script.sh
+5. module_load
 ```
 
 With the folder structure set up, let's move the starting files to their respective subfolders using the `cp` command.
@@ -122,6 +128,8 @@ With the folder structure set up, let's move the starting files to their respect
 cp HKeDNAworkshop2023.zip sequenceData/2-raw
 cp metadata-COI-selected-updated.txt sequenceData/0-metadata
 cp newDBcrabsCOIsintax.fasta sequenceData/7-refdb
+cp example-script.sh sequenceData/1-scripts
+cp module_load sequenceData/1-scripts
 ```
 
 Again, we can check if the command executed as expected by listing the files within the subfolder **2-raw** using the `ls -ltr` command. Note that we do not need to first use the `cd` command to move to the directory for which we would like to list all of the files, but that we can specify which directory we would like to list by referring to it after the `ls -ltr` command.
@@ -133,7 +141,7 @@ ls -ltr sequenceData/2-raw
 ````{admonition} Output
 :class: note, dropdown
 ```
--rw-r--r--  1 gjeunen  staff  568074346  6 Oct 20:28 HKeDNAworkshop2023.zip
+-rw-r--r-- 1 ednaw01 others 568074346 Oct 21 10:59 HKeDNAworkshop2023.zip
 ```
 ````
 

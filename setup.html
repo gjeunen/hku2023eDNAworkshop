@@ -358,9 +358,9 @@ document.write(`
 <p>To set up this folder structure, let us navigate to the starting directory of this workshop. We can do this using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command, which stands for <em>change directory</em>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The code below is the path on my system. Make sure to alter the path that specifies the location of the starting folder on your system.</p>
+<p>The code below assumes you are in the home folder on the HKU supercomputer. Make sure to alter the path that specifies the location of the starting folder on your system if this is not your starting point.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/Users/gjeunen/Documents/work/lectures/HKU2023/tutorial/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>ednaw01/
 </pre></div>
 </div>
 <p>It is always a good idea to check if the code executed as expected. In this case, we can verify we are in the correct working directory by using the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command, which stands for <em>print working directory</em>.</p>
@@ -369,7 +369,7 @@ document.write(`
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">gjeunen</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">HKU2023</span><span class="o">/</span><span class="n">tutorial</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ednaw01</span><span class="o">/</span><span class="n">ednaw01</span>
 </pre></div>
 </div>
 </div>
@@ -379,14 +379,16 @@ document.write(`
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rwxrwxrwx</span><span class="o">@</span> <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">240602642</span>  <span class="mi">7</span> <span class="n">Feb</span>  <span class="mi">2023</span> <span class="n">newDBcrabsCOIsintax</span><span class="o">.</span><span class="n">fasta</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--@</span> <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>      <span class="mi">11958</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">13</span><span class="p">:</span><span class="mi">50</span> <span class="n">metadata</span><span class="o">-</span><span class="n">COI</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">updated</span><span class="o">.</span><span class="n">txt</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">568074346</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">13</span><span class="p">:</span><span class="mi">54</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>     <span class="mi">12097</span> <span class="n">Oct</span> <span class="mi">18</span> <span class="mi">10</span><span class="p">:</span><span class="mi">31</span> <span class="n">metadata</span><span class="o">-</span><span class="n">COI</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">updated</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">112435863</span> <span class="n">Oct</span> <span class="mi">18</span> <span class="mi">10</span><span class="p">:</span><span class="mi">36</span> <span class="n">newDBcrabsCOIsintax</span><span class="o">.</span><span class="n">fasta</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">568074346</span> <span class="n">Oct</span> <span class="mi">18</span> <span class="mi">10</span><span class="p">:</span><span class="mi">40</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>       <span class="mi">169</span> <span class="n">Oct</span> <span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">36</span> <span class="n">module_load</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>       <span class="mi">776</span> <span class="n">Oct</span> <span class="mi">18</span> <span class="mi">11</span><span class="p">:</span><span class="mi">37</span> <span class="n">example</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </div>
 <p>The output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command provides us with a list of the documents in our starting folder, which are the documents we need to complete the tutorial. More on this in the next section.</p>
-<p>Before we go more in detail about the starting files, let us first set up the abovementioned folder structure. While you could complete this task within the folder by generating “new folder”, we can use the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> command in the terminal to set up all the folders and subfolders in one go. Additionally, we will use the <code class="docutils literal notranslate"><span class="pre">-p</span></code> parameter to automatically make any necessary parent directories that might not yet exist.</p>
+<p>Before we go more in detail about the starting files, let us first set up the abovementioned folder structure. Within the command line interface (CLI), we can use the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> command to set up all the folders and subfolders in one go. Additionally, we will use the <code class="docutils literal notranslate"><span class="pre">-p</span></code> parameter to automatically make any necessary parent directories that might not yet exist.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>sequenceData/0-metadata<span class="w"> </span>sequenceData/1-scripts<span class="w"> </span>sequenceData/2-raw<span class="w"> </span>sequenceData/3-fastqc<span class="w"> </span>sequenceData/4-demux<span class="w"> </span>sequenceData/5-filter<span class="w"> </span>sequenceData/6-quality<span class="w"> </span>sequenceData/7-refdb<span class="w"> </span>sequenceData/8-final
 </pre></div>
 </div>
@@ -396,10 +398,12 @@ document.write(`
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rwxrwxrwx</span><span class="o">@</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">240602642</span>  <span class="mi">7</span> <span class="n">Feb</span>  <span class="mi">2023</span> <span class="n">newDBcrabsCOIsintax</span><span class="o">.</span><span class="n">fasta</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--@</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>      <span class="mi">11958</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">13</span><span class="p">:</span><span class="mi">50</span> <span class="n">metadata</span><span class="o">-</span><span class="n">COI</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">updated</span><span class="o">.</span><span class="n">txt</span>
-<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">568074346</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">13</span><span class="p">:</span><span class="mi">54</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
-<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">11</span> <span class="n">gjeunen</span>  <span class="n">staff</span>        <span class="mi">352</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">20</span><span class="p">:</span><span class="mi">11</span> <span class="n">sequenceData</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>       <span class="mi">776</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">52</span> <span class="n">example</span><span class="o">-</span><span class="n">script</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">568074346</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">53</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>     <span class="mi">12097</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">53</span> <span class="n">metadata</span><span class="o">-</span><span class="n">COI</span><span class="o">-</span><span class="n">selected</span><span class="o">-</span><span class="n">updated</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span>       <span class="mi">169</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">53</span> <span class="n">module_load</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">112435863</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">53</span> <span class="n">newDBcrabsCOIsintax</span><span class="o">.</span><span class="n">fasta</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">11</span> <span class="n">ednaw01</span> <span class="n">others</span>        <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">53</span> <span class="n">sequenceData</span>
 </pre></div>
 </div>
 </div>
@@ -410,24 +414,28 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">r</span></code>: read - specifies that we have access to read the file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>: write - specifies that we can write to the file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: execute - specifies that we have permission to execute the file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code>: extended - a novel symbol for MacOS indicating that the file has extended attributes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code>: extended - a novel symbol for MacOS indicating that the file has extended attributes (MacOS specific).</p></li>
 </ol>
 </section>
 <section id="starting-files">
 <h2>2. Starting files<a class="headerlink" href="#starting-files" title="Permalink to this heading">#</a></h2>
-<p>For the bioinformatic and statistical analysis, we need several starting files, including a zipped file containing all the sequencing data (<strong>HKeDNAworkshop2023.zip</strong>), a sample metadata file for the statistical analysis (<strong>metadata-COI-selected-updated.txt</strong>), and our reference database for the taxonomy assignment (<strong>newDBcrabsCOIintax.fasta</strong>).</p>
+<p>For the bioinformatic and statistical analysis, we need several starting files, including a zipped file containing all the sequencing data (<strong>HKeDNAworkshop2023.zip</strong>), a sample metadata file for the statistical analysis (<strong>metadata-COI-selected-updated.txt</strong>), our reference database for the taxonomy assignment (<strong>newDBcrabsCOIintax.fasta</strong>), a template script file where we will paste our code to run on the supercomputer (<strong><a class="reference external" href="http://example-script.sh">example-script.sh</a></strong>), and a script file that automatically loads all the necessary software on the supercomputer. The last two files are only necessary when working on the HKU supercomputer.</p>
 <div class="important admonition">
 <p class="admonition-title">Starting files</p>
 <ol class="arabic simple">
 <li><p>HKeDNAworkshop2023.zip</p></li>
 <li><p>metadata-COI-selected-updated.txt</p></li>
 <li><p>newDBcrabsCOIsintax.fasta</p></li>
+<li><p><a class="reference external" href="http://example-script.sh">example-script.sh</a></p></li>
+<li><p>module_load</p></li>
 </ol>
 </div>
 <p>With the folder structure set up, let’s move the starting files to their respective subfolders using the <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>HKeDNAworkshop2023.zip<span class="w"> </span>sequenceData/2-raw
 cp<span class="w"> </span>metadata-COI-selected-updated.txt<span class="w"> </span>sequenceData/0-metadata
 cp<span class="w"> </span>newDBcrabsCOIsintax.fasta<span class="w"> </span>sequenceData/7-refdb
+cp<span class="w"> </span>example-script.sh<span class="w"> </span>sequenceData/1-scripts
+cp<span class="w"> </span>module_load<span class="w"> </span>sequenceData/1-scripts
 </pre></div>
 </div>
 <p>Again, we can check if the command executed as expected by listing the files within the subfolder <strong>2-raw</strong> using the <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-ltr</span></code> command. Note that we do not need to first use the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command to move to the directory for which we would like to list all of the files, but that we can specify which directory we would like to list by referring to it after the <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-ltr</span></code> command.</p>
@@ -436,7 +444,7 @@ cp<span class="w"> </span>newDBcrabsCOIsintax.fasta<span class="w"> </span>seque
 </div>
 <div class="note dropdown admonition">
 <p class="admonition-title">Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">gjeunen</span>  <span class="n">staff</span>  <span class="mi">568074346</span>  <span class="mi">6</span> <span class="n">Oct</span> <span class="mi">20</span><span class="p">:</span><span class="mi">28</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">ednaw01</span> <span class="n">others</span> <span class="mi">568074346</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="mi">10</span><span class="p">:</span><span class="mi">59</span> <span class="n">HKeDNAworkshop2023</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
 </div>
