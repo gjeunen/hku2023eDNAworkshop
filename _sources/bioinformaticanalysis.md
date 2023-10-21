@@ -1753,7 +1753,21 @@ chmod +x sequenceData/1-scripts/rawMergedTrimmedStatistics.py
 ```
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 ./sequenceData/1-scripts/rawMergedTrimmedStatistics.py sequenceData/2-raw/ sequenceData/2-raw/unzipped/ sequenceData/4-demux/
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **check_adapter_trimming.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/check_adapter_trimming.sh
+```
+
+```{code-block} bash
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_and_trimmed_bargraph.png ./
 ```
 
 ```{figure} raw_and_merged_and_trimmed_bargraph.png
@@ -1809,7 +1823,17 @@ chmod +x sequenceData/1-scripts/cutadaptParsing.py
 ```
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 ./sequenceData/1-scripts/cutadaptParsing.py sequenceData/0-metadata/cutadapt_primer_trimming.txt NTC_1_merged.fastq+NTC_2_merged.fastq+NTC_3_merged.fastq
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **check_neg_trimming.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/check_neg_trimming.sh
 ```
 
 ````{admonition} Output
@@ -1880,6 +1904,10 @@ When processing your own metabarcoding data, I suggest you follow the same struc
 For quality filtering, we will be using the `--fastq_filter` command in [VSEARCH](https://github.com/torognes/vsearch). During this step, we will discard all sequences that do not adhere to a specific set of rules. Quality filtering parameters are not standardized, but rather specific for each library. For our tutorial data, we will filter out all sequences on a much stricter size range compared to the settings we used during primer trimming (`--fastq_minlen 310` and `--fastq_maxlen 316`). Additionally, we will remove sequences that have ambiguous base calls, bases denotes as N, rather than A, C, G, or T (`--fastq_maxns 0`). Ambiguous base calls, however, are not a real issue with Illumina sequencing data. The last parameter we will use to filter our sequences is a maximum expected error rate (`--fastq_maxee 1.0`). As this is the last step in our bioinformatic pipeline where quality scores are essential, we will export our output files both in .fastq and .fasta format. Additionally, we will be merging all files together after this step in the bioinformatic pipeline. Before merging all files, however, we need to change the sequence headers to contain the information to which sample the sequence belongs to, which is currently stored in the file name. We can rename sequence header based on the file name using the `--relabel` parameter.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 cd sequenceData/4-demux/
 for fq in *_trimmed.fastq
 do
@@ -1888,8 +1916,12 @@ do
   vsearch --fastq_filter ${fq} --fastq_maxee 1.0 --fastq_maxlen 316 --fastq_minlen 310 --fastq_maxns 0 --fastqout ../5-filter/${fq/_trimmed.fastq/_filtered.fastq} --fastaout ../5-filter/${fq/_trimmed.fastq/_filtered.fasta} --relabel ${fq/_trimmed.fastq/}.
 
 done
+```
 
-cd ../../
+Press `ctrl + x` and `y` to save the file and change the name to **quality_filter.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/quality_filter.sh
 ```
 
 ````{admonition} Output
@@ -2194,7 +2226,21 @@ chmod +x sequenceData/1-scripts/rawMergedTrimmedFilteredStatistics.py
 ```
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 ./sequenceData/1-scripts/rawMergedTrimmedFilteredStatistics.py sequenceData/2-raw/ sequenceData/2-raw/unzipped/ sequenceData/4-demux/ sequenceData/5-filter/
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **check_quality_filter.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/check_quality_filter.sh
+```
+
+```{code-block} bash
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_and_trimmed_and_filtered_bargraph.png ./
 ```
 
 ```{figure} raw_and_merged_and_trimmed_and_filtered_bargraph.png
@@ -2210,7 +2256,17 @@ This bar graph shows that after quality filtering, we still keep around 80% of t
 Before continuing with the bioinformatic pipeline, it is best to check if the quality filtering step retained only high-quality sequences that are of length ~313 bp (estimated length of the amplicon). If quality filtering was successful, we can move on to the next steps in our bioinformatic pipeline. The check the quality and length of our filtered sequence files, we will use [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and [MULTIQC](https://multiqc.info), same as before.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 fastqc sequenceData/5-filter/*.fastq -o sequenceData/3-fastqc/ -t 8
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **fastqc_quality_filter.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/fastqc_quality_filter.sh
 ```
 
 ````{admonition} Output
@@ -2249,7 +2305,21 @@ Approx 50% complete for COI_100_HK38_filtered.fastq
 FastQC will generate a .html report for every single .fastq file in the subdirectory **sequenceData/5-filter/**. Since we are working with 27 files, it will be easier to compare the reports by collating them, something we can do using multiQC.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 multiqc sequenceData/3-fastqc/*filtered* -o sequenceData/3-fastqc/
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **multiqc_quality_filter.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/multiqc_quality_filter.sh
+```
+
+```{code-block} bash
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/sequenceData/3-fastqc/multiqc_report.html ./
 ```
 
 The multiQC program will combine all 27 FastQC reports into a single .html document. Let's open this to see how our filtered sequence data is looking like. Since we have written both multiQC reports (raw and filtered) to the same **sequenceData/3-fastqc/** directory, make sure to open the latest report. The file name will most likely end in **_1.html**.
@@ -2322,7 +2392,17 @@ With the `cat` command, we have created a single file. The next step in our bioi
 We can dereplicate our data by using the `--derep_fulllength` command in [VSEARCH](https://github.com/torognes/vsearch). The `--sizeout` parameter keeps a tally of the number of times each unique sequence was observed across all samples and places this information in the sequence header. Since we are looking at unique sequences across samples, it wouldn't make much sense to keep the current sequence header information, as it currently refers to which sample a sequence belongs to. We will, therefore, rename the sequence headers by using the `--relabel` parameter.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 vsearch --derep_fulllength sequenceData/6-quality/combined.fasta --sizeout --relabel uniq. --output sequenceData/6-quality/uniques.fasta
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **dereplication.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/dereplication.sh
 ```
 
 ````{admonition} Output
@@ -2469,7 +2549,17 @@ For this tutorial, we will use the **denoising** approach, as it is favoured in 
 For denoising, we will use the [unoise3 algorithm](https://drive5.com/usearch/manual/cmd_unoise3.html) as implemented in the `--cluster_unoise` command in [VSEARCH](https://github.com/torognes/vsearch). Since denoising is based on read abundance of the unique sequences, we can specify the `--sizein` parameter. The minimum abundance threshold for a true denoised read is defaulted to 8 reads, as specified by the unoise3 algorithm developer. However, more recent research by [Bokulich et al., 2013](https://www.nature.com/articles/nmeth.2276), identified a minimum abundance threshold to be more appropriate. Hence, we will set the `--minsize` parameter to 0.001%, which in our case is ~22 reads. As we will be merging different reads with varying abundances, we need to recalculate the new count for each denoised read using the `--sizeout` parameter. Relabeling the sequence headers can be done through the `--relabel` parameter and the output file is specified using `--centroids`.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 vsearch --cluster_unoise sequenceData/6-quality/uniques.fasta --sizein --minsize 22 --sizeout --relabel denoised. --centroids sequenceData/6-quality/denoised.fasta
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **denoising.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/denoising.sh
 ```
 
 ````{admonition} Output
@@ -2507,7 +2597,17 @@ The second to last step in our bioinformatic pipeline is to remove chimeric sequ
 We will use the `--uchime3_denovo` algorithm as implemented in [VSEARCH](https://github.com/torognes/vsearch) for removing chimeric sequences from our denoised reads. This method is also based on sequence abundance, hence, we need to provide the `--sizein` parameter. As the output (parameter `--nonchimeras`) file will contain our **biologically relevant** sequences, we will relabel our sequence headers using `--relabel zotu.`.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 vsearch --uchime3_denovo sequenceData/6-quality/denoised.fasta --sizein --nonchimeras sequenceData/8-final/zotus.fasta --relabel zotu.
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **chimeras.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/chimeras.sh
 ```
 
 ````{admonition} Output
@@ -2545,7 +2645,17 @@ Now that we have created our list of **biologically relevant** sequences or ZOTU
 In metabarcoding studies, a frequency table is analogous, where it tells us how many times each sequence has appeared in each sample. It is the end-product of all the bioinformatic processing steps we have conducted today. Now that we have identified what we believe to be true biological sequences, we are going to generate our frequency table by matching the merged sequences to our ZOTU sequence list. Remember that the sequences within the **sequenceData/6-quality/combined.fasta** file have the information of the sample they belong to present in the sequence header, which is how the `--usearch_global` command in [VSEARCH](https://github.com/torognes/vsearch) can generate the frequency table. The `--db` parameter allows us to set the ZOTU sequence list (**sequenceData/8-final/zotus.fasta**) as the database to search against, while we can specify the `--strand` parameter as *plus*, since all sequences are in the same direction after primer trimming. Finally, we need to incorporate a 97% identity threshold for this function through the `--id` parameter. This might seem counter-intuitive, since we employed a denoising approach. However, providing some leniency on which sequences can map to our ZOTU will allow us to incorporate a larger percentage of the data set. As some ZOTUs might be more similar to each other than 97%, the algorithm will sort out the best match and add the sequence to the correct ZOTU sequence. If you'd like to be more conservative, you can set this threshold to 99%, though this is not recommended by the authors.
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 vsearch --usearch_global sequenceData/6-quality/combined.fasta --db sequenceData/8-final/zotus.fasta --strand plus --id 0.97 --otutabout sequenceData/8-final/zotutable.txt
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **frequency_table.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/frequency_table.sh
 ```
 
 ````{admonition} Output
@@ -2678,7 +2788,21 @@ chmod +x sequenceData/1-scripts/rawMergedTrimmedFilteredFinalStatistics.py
 ```
 
 ```{code-block} bash
+nano sequenceData/1-scripts/example-script.sh
+```
+
+```{code-block} bash
 ./sequenceData/1-scripts/rawMergedTrimmedFilteredFinalStatistics.py sequenceData/2-raw/ sequenceData/2-raw/unzipped/ sequenceData/4-demux/ sequenceData/5-filter/ sequenceData/8-final/zotutable.txt
+```
+
+Press `ctrl + x` and `y` to save the file and change the name to **check_table.sh**. Press `return` and `y` to save under a different name.
+
+```{code-block} bash
+sbatch sequenceData/1-scripts/check_table.sh
+```
+
+```{code-block} bash
+scp -r ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_and_trimmed_and_filtered_and_final_bargraph.png ./
 ```
 
 ```{figure} raw_and_merged_and_trimmed_and_filtered_and_final_bargraph.png

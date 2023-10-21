@@ -2015,7 +2015,17 @@ nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>sequenceData/1-scripts/rawMergedTrimmedStatistics.py
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sequenceData/1-scripts/rawMergedTrimmedStatistics.py<span class="w"> </span>sequenceData/2-raw/<span class="w"> </span>sequenceData/2-raw/unzipped/<span class="w"> </span>sequenceData/4-demux/
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>check_adapter_trimming.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/check_adapter_trimming.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_and_trimmed_bargraph.png<span class="w"> </span>./
 </pre></div>
 </div>
 <figure class="align-default" id="raw-and-merged-and-trimmed-read-count">
@@ -2065,7 +2075,14 @@ nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>sequenceData/1-scripts/cutadaptParsing.py
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sequenceData/1-scripts/cutadaptParsing.py<span class="w"> </span>sequenceData/0-metadata/cutadapt_primer_trimming.txt<span class="w"> </span>NTC_1_merged.fastq+NTC_2_merged.fastq+NTC_3_merged.fastq
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>check_neg_trimming.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/check_neg_trimming.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2133,6 +2150,9 @@ nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 <section id="batch-processing">
 <h3>4.1 Batch processing<a class="headerlink" href="#batch-processing" title="Permalink to this heading">#</a></h3>
 <p>For quality filtering, we will be using the <code class="docutils literal notranslate"><span class="pre">--fastq_filter</span></code> command in <a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a>. During this step, we will discard all sequences that do not adhere to a specific set of rules. Quality filtering parameters are not standardized, but rather specific for each library. For our tutorial data, we will filter out all sequences on a much stricter size range compared to the settings we used during primer trimming (<code class="docutils literal notranslate"><span class="pre">--fastq_minlen</span> <span class="pre">310</span></code> and <code class="docutils literal notranslate"><span class="pre">--fastq_maxlen</span> <span class="pre">316</span></code>). Additionally, we will remove sequences that have ambiguous base calls, bases denotes as N, rather than A, C, G, or T (<code class="docutils literal notranslate"><span class="pre">--fastq_maxns</span> <span class="pre">0</span></code>). Ambiguous base calls, however, are not a real issue with Illumina sequencing data. The last parameter we will use to filter our sequences is a maximum expected error rate (<code class="docutils literal notranslate"><span class="pre">--fastq_maxee</span> <span class="pre">1.0</span></code>). As this is the last step in our bioinformatic pipeline where quality scores are essential, we will export our output files both in .fastq and .fasta format. Additionally, we will be merging all files together after this step in the bioinformatic pipeline. Before merging all files, however, we need to change the sequence headers to contain the information to which sample the sequence belongs to, which is currently stored in the file name. We can rename sequence header based on the file name using the <code class="docutils literal notranslate"><span class="pre">--relabel</span></code> parameter.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sequenceData/4-demux/
 <span class="k">for</span><span class="w"> </span>fq<span class="w"> </span><span class="k">in</span><span class="w"> </span>*_trimmed.fastq
 <span class="k">do</span>
@@ -2141,8 +2161,10 @@ nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 <span class="w">  </span>vsearch<span class="w"> </span>--fastq_filter<span class="w"> </span><span class="si">${</span><span class="nv">fq</span><span class="si">}</span><span class="w"> </span>--fastq_maxee<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>--fastq_maxlen<span class="w"> </span><span class="m">316</span><span class="w"> </span>--fastq_minlen<span class="w"> </span><span class="m">310</span><span class="w"> </span>--fastq_maxns<span class="w"> </span><span class="m">0</span><span class="w"> </span>--fastqout<span class="w"> </span>../5-filter/<span class="si">${</span><span class="nv">fq</span><span class="p">/_trimmed.fastq/_filtered.fastq</span><span class="si">}</span><span class="w"> </span>--fastaout<span class="w"> </span>../5-filter/<span class="si">${</span><span class="nv">fq</span><span class="p">/_trimmed.fastq/_filtered.fasta</span><span class="si">}</span><span class="w"> </span>--relabel<span class="w"> </span><span class="si">${</span><span class="nv">fq</span><span class="p">/_trimmed.fastq/</span><span class="si">}</span>.
 
 <span class="k">done</span>
-
-<span class="nb">cd</span><span class="w"> </span>../../
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>quality_filter.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/quality_filter.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2442,7 +2464,17 @@ grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&g
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>sequenceData/1-scripts/rawMergedTrimmedFilteredStatistics.py
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sequenceData/1-scripts/rawMergedTrimmedFilteredStatistics.py<span class="w"> </span>sequenceData/2-raw/<span class="w"> </span>sequenceData/2-raw/unzipped/<span class="w"> </span>sequenceData/4-demux/<span class="w"> </span>sequenceData/5-filter/
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>check_quality_filter.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/check_quality_filter.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_and_trimmed_and_filtered_bargraph.png<span class="w"> </span>./
 </pre></div>
 </div>
 <figure class="align-default" id="raw-and-merged-and-trimmed-and-filtered-read-count">
@@ -2456,7 +2488,14 @@ grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&g
 <section id="check-filtering-step">
 <h3>4.3 Check filtering step<a class="headerlink" href="#check-filtering-step" title="Permalink to this heading">#</a></h3>
 <p>Before continuing with the bioinformatic pipeline, it is best to check if the quality filtering step retained only high-quality sequences that are of length ~313 bp (estimated length of the amplicon). If quality filtering was successful, we can move on to the next steps in our bioinformatic pipeline. The check the quality and length of our filtered sequence files, we will use <a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FASTQC</a> and <a class="reference external" href="https://multiqc.info">MULTIQC</a>, same as before.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fastqc<span class="w"> </span>sequenceData/5-filter/*.fastq<span class="w"> </span>-o<span class="w"> </span>sequenceData/3-fastqc/<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>fastqc_quality_filter.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/fastqc_quality_filter.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2492,7 +2531,17 @@ grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&g
 </div>
 </div>
 <p>FastQC will generate a .html report for every single .fastq file in the subdirectory <strong>sequenceData/5-filter/</strong>. Since we are working with 27 files, it will be easier to compare the reports by collating them, something we can do using multiQC.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>multiqc<span class="w"> </span>sequenceData/3-fastqc/*filtered*<span class="w"> </span>-o<span class="w"> </span>sequenceData/3-fastqc/
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>multiqc_quality_filter.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/multiqc_quality_filter.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/sequenceData/3-fastqc/multiqc_report.html<span class="w"> </span>./
 </pre></div>
 </div>
 <p>The multiQC program will combine all 27 FastQC reports into a single .html document. Let’s open this to see how our filtered sequence data is looking like. Since we have written both multiQC reports (raw and filtered) to the same <strong>sequenceData/3-fastqc/</strong> directory, make sure to open the latest report. The file name will most likely end in <strong>_1.html</strong>.</p>
@@ -2552,7 +2601,14 @@ grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;^&g
 <h3>5.2 Finding unique sequences<a class="headerlink" href="#finding-unique-sequences" title="Permalink to this heading">#</a></h3>
 <p>With the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command, we have created a single file. The next step in our bioinformatic pipeline is to dereplicate our data, i.e., find unique sequences. Since metabarcoding data is based on a PCR amplification method, the same DNA molecule will have been copied thousands or millions of times and, therefore, sequenced multiple times. In order to reduce the file size and computational cost, it is convenient to work with unique sequences and keep track of how many times each unique sequence was found in our data set. This dereplication step is also the reason why we combined all samples into a single file, as the same barcode (or species if you will) can be found across different samples.</p>
 <p>We can dereplicate our data by using the <code class="docutils literal notranslate"><span class="pre">--derep_fulllength</span></code> command in <a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a>. The <code class="docutils literal notranslate"><span class="pre">--sizeout</span></code> parameter keeps a tally of the number of times each unique sequence was observed across all samples and places this information in the sequence header. Since we are looking at unique sequences across samples, it wouldn’t make much sense to keep the current sequence header information, as it currently refers to which sample a sequence belongs to. We will, therefore, rename the sequence headers by using the <code class="docutils literal notranslate"><span class="pre">--relabel</span></code> parameter.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vsearch<span class="w"> </span>--derep_fulllength<span class="w"> </span>sequenceData/6-quality/combined.fasta<span class="w"> </span>--sizeout<span class="w"> </span>--relabel<span class="w"> </span>uniq.<span class="w"> </span>--output<span class="w"> </span>sequenceData/6-quality/uniques.fasta
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong><a class="reference external" href="http://dereplication.sh">dereplication.sh</a></strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/dereplication.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2689,7 +2745,14 @@ One-liner</label><div class="sd-tab-content docutils">
 <p>When you denoise the dataset, it is expected that one species may have more than one ZOTU. This means that when the reference database is incomplete, or you plan to work with ZOTUs instead of taxonomic assignments, your diversity estimates will be highly inflated. When clustering the dataset, on the other hand, it is expected that an OTU may have more than one species assigned to it, meaning that you may lose some correct biological sequences that are present in your data by merging species with barcodes more similar than 97%. In other words, you will miss out on differentiating closely related species and intraspecific variation.</p>
 <p>For this tutorial, we will use the <strong>denoising</strong> approach, as it is favoured in recent years. However, clustering is still a valid option. So, feel free to explore this approach for your own data set if you prefer.</p>
 <p>For denoising, we will use the <a class="reference external" href="https://drive5.com/usearch/manual/cmd_unoise3.html">unoise3 algorithm</a> as implemented in the <code class="docutils literal notranslate"><span class="pre">--cluster_unoise</span></code> command in <a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a>. Since denoising is based on read abundance of the unique sequences, we can specify the <code class="docutils literal notranslate"><span class="pre">--sizein</span></code> parameter. The minimum abundance threshold for a true denoised read is defaulted to 8 reads, as specified by the unoise3 algorithm developer. However, more recent research by <a class="reference external" href="https://www.nature.com/articles/nmeth.2276">Bokulich et al., 2013</a>, identified a minimum abundance threshold to be more appropriate. Hence, we will set the <code class="docutils literal notranslate"><span class="pre">--minsize</span></code> parameter to 0.001%, which in our case is ~22 reads. As we will be merging different reads with varying abundances, we need to recalculate the new count for each denoised read using the <code class="docutils literal notranslate"><span class="pre">--sizeout</span></code> parameter. Relabeling the sequence headers can be done through the <code class="docutils literal notranslate"><span class="pre">--relabel</span></code> parameter and the output file is specified using <code class="docutils literal notranslate"><span class="pre">--centroids</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vsearch<span class="w"> </span>--cluster_unoise<span class="w"> </span>sequenceData/6-quality/uniques.fasta<span class="w"> </span>--sizein<span class="w"> </span>--minsize<span class="w"> </span><span class="m">22</span><span class="w"> </span>--sizeout<span class="w"> </span>--relabel<span class="w"> </span>denoised.<span class="w"> </span>--centroids<span class="w"> </span>sequenceData/6-quality/denoised.fasta
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong><a class="reference external" href="http://denoising.sh">denoising.sh</a></strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/denoising.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2723,7 +2786,14 @@ One-liner</label><div class="sd-tab-content docutils">
 </figcaption>
 </figure>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">--uchime3_denovo</span></code> algorithm as implemented in <a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a> for removing chimeric sequences from our denoised reads. This method is also based on sequence abundance, hence, we need to provide the <code class="docutils literal notranslate"><span class="pre">--sizein</span></code> parameter. As the output (parameter <code class="docutils literal notranslate"><span class="pre">--nonchimeras</span></code>) file will contain our <strong>biologically relevant</strong> sequences, we will relabel our sequence headers using <code class="docutils literal notranslate"><span class="pre">--relabel</span> <span class="pre">zotu.</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vsearch<span class="w"> </span>--uchime3_denovo<span class="w"> </span>sequenceData/6-quality/denoised.fasta<span class="w"> </span>--sizein<span class="w"> </span>--nonchimeras<span class="w"> </span>sequenceData/8-final/zotus.fasta<span class="w"> </span>--relabel<span class="w"> </span>zotu.
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong><a class="reference external" href="http://chimeras.sh">chimeras.sh</a></strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/chimeras.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2756,7 +2826,14 @@ One-liner</label><div class="sd-tab-content docutils">
 <h2>8. Frequency table<a class="headerlink" href="#frequency-table" title="Permalink to this heading">#</a></h2>
 <p>Now that we have created our list of <strong>biologically relevant</strong> sequences or ZOTUs or “species”, we are ready to generate a frequency table, also known as a count table. This will be the last step in our bioinformatic pipeline. A frequency table is something you might have encountered before during some traditional ecological surveys you have conducted, whereby a table was created with site names as column headers, a species list as rows, and the number in each cell representing the number of individuals observed for a specific species at a specific site.</p>
 <p>In metabarcoding studies, a frequency table is analogous, where it tells us how many times each sequence has appeared in each sample. It is the end-product of all the bioinformatic processing steps we have conducted today. Now that we have identified what we believe to be true biological sequences, we are going to generate our frequency table by matching the merged sequences to our ZOTU sequence list. Remember that the sequences within the <strong>sequenceData/6-quality/combined.fasta</strong> file have the information of the sample they belong to present in the sequence header, which is how the <code class="docutils literal notranslate"><span class="pre">--usearch_global</span></code> command in <a class="reference external" href="https://github.com/torognes/vsearch">VSEARCH</a> can generate the frequency table. The <code class="docutils literal notranslate"><span class="pre">--db</span></code> parameter allows us to set the ZOTU sequence list (<strong>sequenceData/8-final/zotus.fasta</strong>) as the database to search against, while we can specify the <code class="docutils literal notranslate"><span class="pre">--strand</span></code> parameter as <em>plus</em>, since all sequences are in the same direction after primer trimming. Finally, we need to incorporate a 97% identity threshold for this function through the <code class="docutils literal notranslate"><span class="pre">--id</span></code> parameter. This might seem counter-intuitive, since we employed a denoising approach. However, providing some leniency on which sequences can map to our ZOTU will allow us to incorporate a larger percentage of the data set. As some ZOTUs might be more similar to each other than 97%, the algorithm will sort out the best match and add the sequence to the correct ZOTU sequence. If you’d like to be more conservative, you can set this threshold to 99%, though this is not recommended by the authors.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vsearch<span class="w"> </span>--usearch_global<span class="w"> </span>sequenceData/6-quality/combined.fasta<span class="w"> </span>--db<span class="w"> </span>sequenceData/8-final/zotus.fasta<span class="w"> </span>--strand<span class="w"> </span>plus<span class="w"> </span>--id<span class="w"> </span><span class="m">0</span>.97<span class="w"> </span>--otutabout<span class="w"> </span>sequenceData/8-final/zotutable.txt
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>frequency_table.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/frequency_table.sh
 </pre></div>
 </div>
 <div class="note dropdown admonition">
@@ -2881,7 +2958,17 @@ One-liner</label><div class="sd-tab-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>sequenceData/1-scripts/rawMergedTrimmedFilteredFinalStatistics.py
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./sequenceData/1-scripts/rawMergedTrimmedFilteredFinalStatistics.py<span class="w"> </span>sequenceData/2-raw/<span class="w"> </span>sequenceData/2-raw/unzipped/<span class="w"> </span>sequenceData/4-demux/<span class="w"> </span>sequenceData/5-filter/<span class="w"> </span>sequenceData/8-final/zotutable.txt
+</pre></div>
+</div>
+<p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save the file and change the name to <strong>check_table.sh</strong>. Press <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to save under a different name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>sequenceData/1-scripts/check_table.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:~/ednaw01/raw_and_merged_and_trimmed_and_filtered_and_final_bargraph.png<span class="w"> </span>./
 </pre></div>
 </div>
 <figure class="align-default" id="raw-and-merged-and-trimmed-and-filtered-and-final-read-count">
