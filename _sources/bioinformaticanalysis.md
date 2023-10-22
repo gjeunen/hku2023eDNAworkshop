@@ -493,7 +493,10 @@ Basically, the first line tells us that the program will go through a list and `
 Within our for loop to merge reads for all samples, we will generate a list of all forward sequencing files (`*_1.fastq`). Before writing the code to merge reads in our for loop, we will first print which sample is being merged, as the VSEARCH output does not specify this (`echo "Merging reads for: ${R1/_1.fastq/}"`). To print to the Terminal, we can use the `echo` command. With the last parameter for the `echo` command (`${R1/_1.fastq/}"`), we specify that from our forward sequencing file name `$R1`, substitute `_1.fastq` with nothing. After the `echo` command, we execute the `vsearch --fastq_mergepairs` command as we did above, but we need to use the for loop syntax to tell the program what our forward, reverse, and output file names are. Remember that those names change when the program iterates over the list, so we cannot hard code them into the command.
 
 ```{code-block} bash
-rm sequenceData/2-raw/COI_100_HK37merged.fastq 
+rm sequenceData/2-raw/COI_100_HK37merged.fastq
+```
+
+```{code-block} bash
 nano sequenceData/1-scripts/example-script.sh
 ```
 
