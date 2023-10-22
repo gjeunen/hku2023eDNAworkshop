@@ -1852,7 +1852,9 @@ scp<span class="w"> </span>-r<span class="w"> </span>ednaw01@hpc2021-io1.hku.hk:
 <h3>3.2 batch trimming<a class="headerlink" href="#batch-trimming" title="Permalink to this heading">#</a></h3>
 <p>Similarly to the merging of reads, we need to process 27 samples. Hence, we will write another for loop to accomplish this goal, rather than executing the code to trim primer sequences 27 times by ourselves. Because the cutadapt output that is written to the Terminal window is very elaborate, we will write it to a file instead. In the next section (<em>Summarizing cutadapt output</em>), we’ll parse the output to produce some graphs in order to get a better overview of how cutadapt performed across the 27 samples. First, we will remove the file we just generated and move to the <strong>sequenceData/2-raw/</strong> directory. As we’ve introduced the for loop syntax before and explained the cutadapt code snippet, I won’t be going into too much detail on each aspect.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>sequenceData/4-demux/COI_100_HK37_trimmed.fastq
-nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>sequenceData/1-scripts/example-script.sh
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sequenceData/2-raw/

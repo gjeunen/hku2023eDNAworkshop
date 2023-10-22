@@ -1581,6 +1581,9 @@ Similarly to the merging of reads, we need to process 27 samples. Hence, we will
 
 ```{code-block} bash
 rm sequenceData/4-demux/COI_100_HK37_trimmed.fastq
+```
+
+```{code-block} bash
 nano sequenceData/1-scripts/example-script.sh
 ```
 
